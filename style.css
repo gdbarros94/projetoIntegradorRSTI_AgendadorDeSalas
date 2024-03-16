@@ -6,3 +6,21 @@
 body{
     background-color: var(--bg-color);
 }
+
+.navbar-text{
+    display: flex;
+    text-align: center;
+
+}
+
+.list-group-item {
+   --bs-list-group-bg: transparent;
+   --bs-list-group-border-color: transparent;
+}
+
+#principal{
+    background-image: url(senacImage.png);
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
