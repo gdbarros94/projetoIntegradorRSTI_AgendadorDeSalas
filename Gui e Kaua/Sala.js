@@ -54,17 +54,21 @@ static SalasCadastradas = [
     }
   }
 
-  listar() {
-    console.log(`Listando todas as salas:`);
+  static listar() {
+    console.log("Listando todas as salas cadastradas:");
     Sala.SalasCadastradas.forEach(sala => {
       console.log(`ID: ${sala.id}, Nome: ${sala.nome}, Capacidade: ${sala.capacidade}, Descrição: ${sala.descricao}`);
     });
-    // Exibir a lista de salas
   }
 
-  excluir() {
-    // Lógica para remover uma sala do sistema
-    console.log(`Sala ${this.nome} excluída com sucesso!`);
+  static excluir (id) {
+    const index = Sala.SalasCadastradas.findIndex( sala => sala.id === id);
+    if (index !== -1) {
+      Sala.SalasCadastradas.splice(index, 1);
+      console.log(`Sala com ID ${id} excluída com sucesso!`);
+    } else {
+      console.log(`Sala com ID ${id} não encontrada. `);
+    }
   }
 
   buscarPorId() {
@@ -86,13 +90,19 @@ static SalasCadastradas = [
 }
 
 let Sala101 = new Sala(1, "Sala 101", 30, "Sala de Moda");
-
+let Sala102 = new Sala(2, "Sala 102", 10, "Sala de TI");
+let Sala103 = new Sala(3, "Sala 103", 15, "Sala de Costura");
 Sala101.cadastrar();
-Sala101.listar();
+Sala102.cadastrar();
+Sala103.cadastrar();
 
-Sala101.editar(1, "Sala 1001", 25, "Sala de TI")
+Sala.listar();
+Sala.excluir(3);
+Sala.listar();
 
-Sala101.listar();
+
+
+
 
 
 /*
