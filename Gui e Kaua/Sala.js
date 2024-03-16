@@ -20,11 +20,38 @@ static SalasCadastradas = [
     console.log(`Sala ${this.id} Cadastrada com sucesso!`)
   }
  
-  editar(novoNome, novaCapacidade, novaDescricao) {
-    this.nome = novoNome
-    this.capacidade = novaCapacidade
-    this.descricao = novaDescricao 
-    console.log(`informações da sala ${this.id} editada com sucesso!`);
+  editar(idOuNome, novoNome, novaCapacidade, novaDescricao) {
+    // Variável para armazenar a sala encontrada com base no ID ou nome fornecido.
+    let salaEncontrada;
+  
+    // Verifica se o argumento passado é um número (ID) ou uma string (nome).
+    if (typeof idOuNome === 'number') {
+      // Procura a sala pelo ID.
+      salaEncontrada = Sala.SalasCadastradas.find(sala => sala.id === idOuNome);
+    } else if (typeof idOuNome === 'string') {
+      // Procura a sala pelo nome.
+      salaEncontrada = Sala.SalasCadastradas.find(sala => sala.nome === idOuNome);
+    }
+  
+    // Verifica se a sala foi encontrada.
+    if (salaEncontrada) {
+      // Armazena as informações antigas da sala.
+      const idAntigo = salaEncontrada.id;
+      const nomeAntigo = salaEncontrada.nome;
+      const capacidadeAntigo = salaEncontrada.capacidade;
+      const descricaoAntigo = salaEncontrada.descricao;
+  
+      // Atualiza as informações da sala com os novos valores.
+      salaEncontrada.nome = novoNome;
+      salaEncontrada.capacidade = novaCapacidade;
+      salaEncontrada.descricao = novaDescricao;
+  
+      // Exibe uma mensagem indicando que a sala foi editada com sucesso.
+      console.log(`\n\nSala com ID: ${idAntigo}, nome: "${nomeAntigo}", capacidade: ${capacidadeAntigo} e descrição: "${descricaoAntigo}".\nFoi editada com sucesso para sala com ID: ${salaEncontrada.id}, nome: "${salaEncontrada.nome}", capacidade: ${salaEncontrada.capacidade} e descrição: "${salaEncontrada.descricao}"!\n\n`);
+    } else {
+      // Se a sala não for encontrada, exibe uma mensagem de erro.
+      console.log(`Sala com ID ou nome "${idOuNome}" não encontrada. A edição não pode ser concluída.\n`);
+    }
   }
 
   listar() {
@@ -57,10 +84,14 @@ static SalasCadastradas = [
   
 }
 
-let Sala101 = new Sala(1, "Sala 101", 30, "Sala de aula para a turma do primeiro ano.");
+let Sala101 = new Sala(1, "Sala 101", 30, "Sala de Moda");
+
 Sala101.cadastrar();
+
 Sala101.listar();
-Sala101.editar("Sala 102", 25, "Sala de reuniões")
+
+Sala101.editar(1, "Sala 1001", 25, "Sala de TI")
+
 Sala101.listar();
 
 /*
