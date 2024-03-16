@@ -1,0 +1,8 @@
+:root{
+    --bs-tertiary-bg-rgb:91,91,91;
+    --bg-color: rgb(238, 238, 238);
+}
+
+body{
+    background-color: var(--bg-color);
+}
