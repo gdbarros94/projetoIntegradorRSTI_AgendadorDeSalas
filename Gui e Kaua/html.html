@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+    
+    function login() {
+        //variáveis que salvam o prompt do HTML
+        const id = document.getElementById('id').value;
+        const idsala = document.getElementById('id-sala').value;
+        const idusuario = document.getElementById('id-usuario').value;
+        const datahorainicio = document.getElementById('data-hora-inicio').value;
+        const datahorafim = document.getElementById('data-hora-fim').value;
+    
+        let Agendamento = [
+           id = 1,
+           idsala = 1,
+           idusuario = 1,
+           datahorainicio = "19:00",
+           datahorafim = "22:00"
+        ] 
+
+        //verifica se todas as informações estão condizentes
+        const sala = sala.find(u => u.id === id && u.idsala === idsala && u.idusuario === idusuario && u.datahorarioinicio === datahorainicio && u.datahorafim);
+    
+        if(sala){
+            document.getElementById('Agendamento');console.alert('Agendamento bem sucedido');
+        } else {
+            document.getElementById('Agendamento');console.alert('Agendamento mau sucedido');
+        }
+    }
+
+    </script>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2>Cadastro de Agendamento de Sala de Aula</h2>
+        <form>
+            <div class="form-group">
+                <label for="id">ID:</label>
+                <input type="text" class="form-control" id="id" name="id">
+            </div>
+            <div class="form-group">
+                <label for="idsala">ID da Sala:</label>
+                <input type="text" class="form-control" id="idSala" name="idSala">
+            </div>
+            <div class="form-group">
+                <label for="idusuario">ID do Usuário:</label>
+                <input type="text" class="form-control" id="idUsuario" name="idUsuario">
+            </div>
+            <div class="form-group">
+                <label for="datahorainicio">Data e Horário de Início:</label>
+                <input type="datetime-local" class="form-control" id="dataHoraInicio" name="dataHoraInicio">
+            </div>
+            <div class="form-group">
+                <label for="datahorafim">Data e Horário de Término:</label>
+                <input type="datetime-local" class="form-control" id="dataHoraFim" name="dataHoraFim">
+            </div>
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
