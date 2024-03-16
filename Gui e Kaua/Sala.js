@@ -6,12 +6,33 @@ class Sala {
     this.descricao = descricao;
   }
 
-  // **Métodos**
+static SalasCadastradas = [
 
+]
+
+
+
+
+// funcao para cadastrar as salas 
+  cadastrar(){
+    // Registra uma sala dentro do array SalaCadastradas
+    Sala.SalasCadastradas.push(this);
+    console.log(`Sala ${this.id} Cadastrada com sucesso!`)
+  }
  
-  editar() {
-    // Lógica para atualizar as informações de uma sala existente
-    console.log(`Sala ${this.nome} atualizada com sucesso!`);
+  editar(novoNome, novaCapacidade, novaDescricao) {
+    this.nome = novoNome
+    this.capacidade = novaCapacidade
+    this.descricao = novaDescricao 
+    console.log(`informações da sala ${this.id} editada com sucesso!`);
+  }
+
+  listar() {
+    console.log(`Listando todas as salas:`);
+    Sala.SalasCadastradas.forEach(sala => {
+      console.log(`ID: ${sala.id}, Nome: ${sala.nome}, Capacidade: ${sala.capacidade}, Descrição: ${sala.descricao}`);
+    });
+    // Exibir a lista de salas
   }
 
   excluir() {
@@ -19,14 +40,7 @@ class Sala {
     console.log(`Sala ${this.nome} excluída com sucesso!`);
   }
 
-  listar() {
-    // Lógica para retornar a lista de todas as salas cadastradas
-    console.log(`Listando todas as salas:`);
-    // Exibir a lista de salas
-  }
-
   buscarPorId() {
-    // Lógica para retornar a sala com o ID especificado
     console.log(`Sala com ID ${this.id} encontrada:`);
     // Exibir as informações da sala
   }
@@ -40,9 +54,14 @@ class Sala {
       console.log(`Sala ${this.nome} indisponível em ${data} das ${horaInicio} às ${horaFim}.`);
     }
   }
+  
 }
 
-
+let Sala101 = new Sala(1, "Sala 101", 30, "Sala de aula para a turma do primeiro ano.");
+Sala101.cadastrar();
+Sala101.listar();
+Sala101.editar("Sala 102", 25, "Sala de reuniões")
+Sala101.listar();
 
 /*
 // Exemplo de uso
