@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gerenciamento de Salas de Aula</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+
+<div class="container-fluid h-100">
+    <div class="row justify-content-center h-100">
+        <!-- Tela de Login -->
+        <div class="col-md-6">
+            <div class="card mt-5">
+                <div class="card-body">
+                    <h3 class="card-title text-center">Login</h3>
+                    <form id="loginForm" onsubmit="return validateLogin()">
+                        <div class="form-group">
+                            <label for="loginUsername">Nome de Usuário:</label>
+                            <input type="text" class="form-control" id="loginUsername" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="loginPassword">Senha:</label>
+                            <input type="password" class="form-control" id="loginPassword" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tela de Cadastro -->
+        <div class="col-md-6">
+            <div class="card mt-5">
+                <div class="card-body">
+                    <h3 class="card-title text-center">Cadastro</h3>
+                    <form id="cadastroForm" onsubmit="return validateCadastro()">
+                        <div class="form-group">
+                            <label for="cadastroUsername">Nome de Usuário:</label>
+                            <input type="text" class="form-control" id="cadastroUsername" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cadastroEmail">Email:</label>
+                            <input type="email" class="form-control" id="cadastroEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cadastroPassword">Senha:</label>
+                            <input type="password" class="form-control" id="cadastroPassword" required>
+                        </div>
+                        <button type="submit" class="btn btn-success btn-block">Cadastrar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<script>
+    // Função para validar o formulário de login
+    function validateLogin() {
+        var username = document.getElementById('loginUsername').value;
+        var password = document.getElementById('loginPassword').value;
+
+        // Adicione lógica de validação aqui, por exemplo:
+        if (username === '' || password === '') {
+            alert('Por favor, preencha todos os campos de login.');
+            return false;
+        }
+
+        // Adicione aqui a lógica para ação de login
+
+        return true; // Evita a submissão do formulário por enquanto
+    }
+
+    // Função para validar o formulário de cadastro
+    function validateCadastro() {
+        var username = document.getElementById('cadastroUsername').value;
+        var email = document.getElementById('cadastroEmail').value;
+        var password = document.getElementById('cadastroPassword').value;
+
+        // Adicione lógica de validação aqui, por exemplo:
+        if (username === '' || email === '' || password === '') {
+            alert('Por favor, preencha todos os campos de cadastro.');
+            return false;
+        }
+
+        // Adicione aqui a lógica para ação de cadastro
+
+        return true; // Evita a submissão do formulário por enquanto
+    }
+</script>
+
+</body>
+</html>
