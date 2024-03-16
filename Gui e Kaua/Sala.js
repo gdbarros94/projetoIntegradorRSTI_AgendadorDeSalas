@@ -24,7 +24,7 @@ static SalasCadastradas = [
     this.nome = novoNome
     this.capacidade = novaCapacidade
     this.descricao = novaDescricao 
-    console.log(`informações da sala ${this.id} editada com sucesso!`);
+    console.log(`informações da sala ${this.nome} foi editada para ${this.novoNome} com sucesso!`);
   }
 
   listar() {
@@ -41,6 +41,7 @@ static SalasCadastradas = [
   }
 
   buscarPorId() {
+    Sala.SalasCadastradas.find(sala => sala.id === id);
     console.log(`Sala com ID ${this.id} encontrada:`);
     // Exibir as informações da sala
   }
@@ -59,9 +60,14 @@ static SalasCadastradas = [
 
 let Sala101 = new Sala(1, "Sala 101", 30, "Sala de aula para a turma do primeiro ano.");
 Sala101.cadastrar();
+Sala101.editar(1,"Sala 102", 25, "Sala de reuniões")
+
+
+/*
 Sala101.listar();
 Sala101.editar("Sala 102", 25, "Sala de reuniões")
 Sala101.listar();
+*/
 
 /*
 // Exemplo de uso
