@@ -6,9 +6,7 @@ class Sala {
     this.descricao = descricao;
   }
 
-static SalasCadastradas = [
-
-]
+static SalasCadastradas = []
 
 
 
@@ -54,27 +52,34 @@ static SalasCadastradas = [
     }
   }
 
-  static listar() {
+  listar() {
     console.log("Listando todas as salas cadastradas:");
     Sala.SalasCadastradas.forEach(sala => {
       console.log(`ID: ${sala.id}, Nome: ${sala.nome}, Capacidade: ${sala.capacidade}, Descrição: ${sala.descricao}`);
     });
   }
 
-  static excluir (id) {
-    const index = Sala.SalasCadastradas.findIndex( sala => sala.id === id);
-    if (index !== -1) {
-      Sala.SalasCadastradas.splice(index, 1);
+  // Método para excluir uma sala pelo ID.
+  excluir(id) {
+    const salaEncontrada = Sala.SalasCadastradas.findIndex(sala => sala.id === id);
+    
+    if (salaEncontrada !== -1) {
+      Sala.SalasCadastradas.splice(salaEncontrada, 1);
       console.log(`Sala com ID ${id} excluída com sucesso!`);
     } else {
-      console.log(`Sala com ID ${id} não encontrada. `);
+      console.log(`Sala com ID ${id} não encontrada. Erro ao excluir!`);
     }
   }
 
-  buscarPorId() {
-    Sala.SalasCadastradas.find(sala => sala.id === id);
-    console.log(`Sala com ID ${this.id} encontrada:`);
-    // Exibir as informações da sala
+  // Método para buscar uma sala pelo ID.
+  buscarPorId(id) {
+    const salaEncontrada = Sala.SalasCadastradas.findIndex(sala => sala.id === id);
+
+    if (salaEncontrada !== -1) {
+      console.log(`Sala com ID ${id} encontrada.`);
+    } else {
+      console.log(`Sala com ID ${id} não encontrada`);
+    }
   }
 
   verificarDisponibilidade(data, horaInicio, horaFim) {
@@ -89,16 +94,25 @@ static SalasCadastradas = [
   
 }
 
+// Criando instâncias de salas
 let Sala101 = new Sala(1, "Sala 101", 30, "Sala de Moda");
 let Sala102 = new Sala(2, "Sala 102", 10, "Sala de TI");
 let Sala103 = new Sala(3, "Sala 103", 15, "Sala de Costura");
+
+// Testes
 Sala101.cadastrar();
 Sala102.cadastrar();
 Sala103.cadastrar();
 
-Sala.listar();
-Sala.excluir(3);
-Sala.listar();
+Sala101.listar();
+
+Sala101.excluir(3);
+
+Sala101.listar();
+
+Sala101.buscarPorId(3)
+
+
 
 
 
