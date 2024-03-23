@@ -84,8 +84,9 @@ static SalasCadastradas = []
 
   verificarDisponibilidade(data, horaInicio, horaFim) {
     // Lógica para verificar se a sala está disponível em um determinado dia e horário
-    const isDisponivel = true; // Implementar a lógica de verificação
-    if (isDisponivel) {
+    const Disponivel = true; // Implementar a lógica de verificação
+
+    if (Disponivel) {
       console.log(`Sala ${this.nome} disponível em ${data} das ${horaInicio} às ${horaFim}.`);
     } else {
       console.log(`Sala ${this.nome} indisponível em ${data} das ${horaInicio} às ${horaFim}.`);
@@ -111,6 +112,8 @@ Sala101.excluir(3);
 Sala101.listar();
 
 Sala101.buscarPorId(3)
+
+Sala101.verificarDisponibilidade()
 
 
 
