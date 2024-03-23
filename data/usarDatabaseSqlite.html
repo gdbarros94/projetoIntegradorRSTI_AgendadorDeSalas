@@ -3,81 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SQLite Database Example</title>
+    <title>SQLite Database Manipulation</title>
 </head>
 <body>
-    <h1>SQLite Database Example</h1>
-    <table id="userData">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Age</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- User data will be dynamically added here -->
-        </tbody>
-    </table>
+    <h1>SQLite Database Manipulation</h1>
+
+    <h2>Insert Data</h2>
+    <form id="insertForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age">
+        <button type="submit">Insert Data</button>
+    </form>
+
+    <h2>Edit Data</h2>
+    <form id="editForm">
+        <label for="editId">ID of data to edit:</label>
+        <input type="number" id="editId" name="id">
+        <label for="newName">New Name:</label>
+        <input type="text" id="newName" name="name">
+        <label for="newAge">New Age:</label>
+        <input type="number" id="newAge" name="age">
+        <button type="submit">Edit Data</button>
+    </form>
+
+    <h2>Delete Data</h2>
+    <form id="deleteForm">
+        <label for="deleteId">ID of data to delete:</label>
+        <input type="number" id="deleteId" name="id">
+        <button type="submit">Delete Data</button>
+    </form>
+
+    <h2>Search Data</h2>
+    <form id="searchForm">
+        <label for="searchId">ID of data to search:</label>
+        <input type="number" id="searchId" name="id">
+        <button type="submit">Search Data</button>
+    </form>
+
+    <div id="searchResult"></div>
 
     <script>
-        // Importing SQLite database class
-        const SQLiteDatabase = require('./SQLiteDatabase');
-
-        // Function to update table with user data
-        function updateTable() {
-            const tableBody = document.querySelector('#userData tbody');
-            tableBody.innerHTML = ''; // Clear existing table rows
-
-            // Querying all users from database and updating table
-            db.queryDatabase('', 'users', 'name', (rows) => {
-                rows.forEach((row) => {
-                    const newRow = document.createElement('tr');
-                    newRow.innerHTML = `
-                        <td>${row.id}</td>
-                        <td>${row.name}</td>
-                        <td>${row.age}</td>
-                    `;
-                    tableBody.appendChild(newRow);
-                });
+        async function postData(url, data) {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
             });
+            return await response.text();
         }
 
-        // Instantiating SQLite database
-        const db = new SQLiteDatabase('database.sqlite');
+        async function submitInsertForm(event) {
+            event.preventDefault();
+            const form = event.target;
+            const formData = new FormData(form);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+            const result = await postData('https://glorious-fiesta-v6wr4xppg66fw96g-3000.app.github.dev//insert', { tableName: 'users', data });
+            console.log(result);
+        }
 
-        // Creating users table if not exists
-        db.createTable('users', {
-            id: 'INTEGER PRIMARY KEY',
-            name: 'TEXT',
-            age: 'INTEGER'
-        });
+        async function submitEditForm(event) {
+            event.preventDefault();
+            const form = event.target;
+            const formData = new FormData(form);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+            const result = await postData('https://glorious-fiesta-v6wr4xppg66fw96g-3000.app.github.dev//update', { tableName: 'users', newData: data, condition: { id: data.id } });
+            console.log(result);
+        }
 
-        // Inserting a user
-        db.insertRow('users', { name: 'John', age: 25 }, (id) => {
-            console.log(`User inserted with ID ${id}`);
-            updateTable(); // Update table after insertion
-        });
+        async function submitDeleteForm(event) {
+            event.preventDefault();
+            const form = event.target;
+            const formData = new FormData(form);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+            const result = await postData('https://glorious-fiesta-v6wr4xppg66fw96g-3000.app.github.dev//delete', { tableName: 'users', condition: { id: data.id } });
+            console.log(result);
+        }
 
-        // Editing a user
-        db.editRow(1, 'users', { age: 26 }, () => {
-            console.log('User edited');
-            updateTable(); // Update table after edition
-        });
+        async function submitSearchForm(event) {
+            event.preventDefault();
+            const form = event.target;
+            const formData = new FormData(form);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+            const result = await fetch('https://glorious-fiesta-v6wr4xppg66fw96g-3000.app.github.dev//search', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ tableName: 'users', condition: { id: data.id } })
+            });
+            const jsonData = await result.json();
+            const searchResultDiv = document.getElementById('searchResult');
+            searchResultDiv.innerHTML = `<pre>${JSON.stringify(jsonData, null, 2)}</pre>`;
+        }
 
-        // Querying and logging user data
-        db.queryDatabase('John', 'users', 'name', (rows) => {
-            console.log('User data:', rows);
-        });
-
-        // Deleting a user
-        db.deleteRow(1, 'users', () => {
-            console.log('User deleted');
-            updateTable(); // Update table after deletion
-        });
-
-        // Closing database connection
-        db.close();
+        document.getElementById('insertForm').addEventListener('submit', submitInsertForm);
+        document.getElementById('editForm').addEventListener('submit', submitEditForm);
+        document.getElementById('deleteForm').addEventListener('submit', submitDeleteForm);
+        document.getElementById('searchForm').addEventListener('submit', submitSearchForm);
     </script>
 </body>
 </html>
