@@ -4,19 +4,33 @@ class Sala {
     this.nome = nome;
     this.capacidade = capacidade;
     this.descricao = descricao;
+
   }
+
 
 static SalasCadastradas = []
 
 
-
-
 // funcao para cadastrar as salas 
-  cadastrar(){
-    // Registra uma sala dentro do array SalaCadastradas
-    Sala.SalasCadastradas.push(this);
-    console.log(`Sala ${this.id} Cadastrada com sucesso!`)
-  }
+ cadastrar(){
+  // Registra uma sala dentro do array SalaCadastradas
+  Sala.SalasCadastradas.push(this);
+  console.log(`Sala ${this.id} Cadastrada com sucesso!`);
+
+  let data = new Date()
+  let horaInicio = `${data.getHours()}:${data.getMinutes()}:${data.getSeconds()}`;
+  let horaFim = `19:00:10`
+
+  const dataString = data.toString();
+  const horaInicioString = horaInicio.toString();
+  const horaFimString = horaFim.toString();
+
+  const dataCadastro = `${data.getDate()}/${data.getMonth() + 1}/${data.getFullYear()}`;
+  
+  console.log(`Data do cadastro: ${dataCadastro}`);
+  console.log(`Hora de início: ${horaInicio}`);
+  console.log(`Hora de fim: ${horaFim}`);
+}
  
   editar(idOuNome, novoNome, novaCapacidade, novaDescricao) {
     // Variável para armazenar a sala encontrada com base no ID ou nome fornecido.
@@ -86,6 +100,7 @@ static SalasCadastradas = []
     // Lógica para verificar se a sala está disponível em um determinado dia e horário
     const Disponivel = true; // Implementar a lógica de verificação
 
+
     if (Disponivel) {
       console.log(`Sala ${this.nome} disponível em ${data} das ${horaInicio} às ${horaFim}.`);
     } else {
@@ -105,35 +120,4 @@ Sala101.cadastrar();
 Sala102.cadastrar();
 Sala103.cadastrar();
 
-Sala101.listar();
-
-Sala101.excluir(3);
-
-Sala101.listar();
-
-Sala101.buscarPorId(3)
-
-Sala101.verificarDisponibilidade()
-
-
-
-
-
-
-
-
-/*
-// Exemplo de uso
-const sala1 = new Sala(1, "Sala 101", 30, "Sala de aula principal");
-sala1.cadastrar();
-
-const sala2 = new Sala(2, "Laboratório de informática", 20, "Equipada com 20 computadores");
-sala2.cadastrar();
-
-sala1.listar();
-sala1.buscarPorId();
-sala1.verificarDisponibilidade("2024-03-17", "10:00", "12:00");
-
-sala2.editar();
-sala2.excluir();
-*/
+Sala101.verificarDisponibilidade('27/03', '10:00:00', '12:00:00');

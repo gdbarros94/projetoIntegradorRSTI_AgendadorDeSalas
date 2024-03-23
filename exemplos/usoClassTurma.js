@@ -1,3 +1,5 @@
+import classTurma from ('./classTurma.js')
+
 // Exemplo de uso da classe GerenciadorTurmas
 
 // Criando um objeto para armazenar as turmas
