@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Gerenciamento de Salas de Aula</title>
+    <title>Tela de Login</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
@@ -12,27 +12,9 @@
 <div class="container-fluid h-100">
     <div class="row justify-content-center h-100">
         <!-- Tela de Login -->
-        <div class="col-md-6">
-            <div class="card mt-5">
-                <div class="card-body">
-                    <h3 class="card-title text-center">Login</h3>
-                    <form id="loginForm" onsubmit="return validateLogin()">
-                        <div class="form-group">
-                            <label for="loginUsername">Nome de Usuário:</label>
-                            <input type="text" class="form-control" id="loginUsername" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="loginPassword">Senha:</label>
-                            <input type="password" class="form-control" id="loginPassword" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-block">Entrar</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-
+       
         <!-- Tela de Cadastro -->
-        <div class="col-md-6">
+        <div class="col col-5 p-0 mx-auto my-0 w-25 d-flex flex-column justify-content-center">
             <div class="card mt-5">
                 <div class="card-body">
                     <h3 class="card-title text-center">Cadastro</h3>
@@ -56,6 +38,25 @@
         </div>
     </div>
 </div>
+<div class="col col-5 p-0 mx-auto my-0 w-100 d-flex flex-column justify-content-center">
+  <div class="card mt-5">
+      <div class="card-body">
+          <h3 class="card-title text-center">Login</h3>
+          <form id="loginForm" onsubmit="return validateLogin()">
+              <div class="form-group">
+                  <label for="loginUsername">Nome de Usuário:</label>
+                  <input type="text" class="form-control" id="loginUsername" required>
+              </div>
+              <div class="form-group">
+                  <label for="loginPassword">Senha:</label>
+                  <input type="password" class="form-control" id="loginPassword" required>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+          </form>
+      </div>
+  </div>
+</div>
+
 
 <!-- Bootstrap JS and dependencies -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>

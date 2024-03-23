@@ -1,0 +1,11 @@
+preciso criar uma classe em javascript para turmas de uma escola em um sistema de gerenciamento de salas. 
+preciso que essa classe seja um CRUD realizando as operações e gravando, editando e deletando os dados em um objeto que é passado na instancia da classe. 
+essa classe deve ter os métodos cadastrar, editar, excluir, listar, buscar por id. 
+o método cadastrar deve receber os parâmetros nome, disciplina, professor, dias da semana, horários inicio da aula, horário fim da aula, e inserir os dados no objeto passado na instancia da classe com um UID.
+o método editar deve receber os parâmetros id da turma, nome, disciplina, professor, dias da semana, horários inicio da aula, horário fim da aula, e buscar pela propriedade com o UID fornecido e alterar os elementos.
+o método excluir deve receber os parâmetros UID da propriedade a ser excluida, buscar no objeto fornecido na instancia da classe e apagar a propriedade do objeto.
+o método para listar deve simplesmente retornar o objeto completo das turmas. 
+o método de buscar por id deve receber como parâmetro o UID da turma e buscar no objeto fornecido na instancia da classe e retornar um objeto com a propriedade encontrada. 
+
+crie todos os outros métodos e funções necessárias para a classe funcionar perfeitamente, revise o código 12 vezes, faça um teste de mesa, e envie sua resposta somente com o conteúdo completo do código da classe. 
+abaixo, crie outro bloco de código e forneça exemplos de uso da classe, a partir instancia até o uso de cada método. 
