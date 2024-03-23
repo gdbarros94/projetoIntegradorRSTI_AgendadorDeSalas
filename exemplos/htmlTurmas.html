@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de Turmas</title>
+</head>
+<body>
+    <h1>Gerenciador de Turmas</h1>
+
+    <!-- Criação de formulário para entrada de dados da turma -->
+    <form id="formularioTurma">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" required><br>
+        <label for="disciplina">Disciplina:</label>
+        <input type="text" id="disciplina" required><br>
+        <label for="professor">Professor:</label>
+        <input type="text" id="professor" required><br>
+        <label for="diasSemana">Dias da Semana:</label>
+        <input type="text" id="diasSemana" required><br>
+        <label for="horaInicio">Horário de Início:</label>
+        <input type="text" id="horaInicio" required><br>
+        <label for="horaFim">Horário de Fim:</label>
+        <input type="text" id="horaFim" required><br>
+        <button type="submit">Cadastrar Turma</button>
+    </form>
+
+    <hr>
+
+    <!-- Lista de turmas -->
+    <h2>Lista de Turmas</h2>
+    <ul id="listaTurmas"></ul>
+
+    <script src="classTurma.js"></script>
+    <script>
+        // Função para atualizar a lista de turmas na página
+        function atualizarListaTurmas() {
+            const listaTurmasElement = document.getElementById('listaTurmas');
+            listaTurmasElement.innerHTML = '';
+
+            for (const uid in gerenciadorTurmas.objeto) {
+                const turma = gerenciadorTurmas.objeto[uid];
+                const listItem = document.createElement('li');
+                listItem.textContent = `${turma.nome} - ${turma.disciplina} - ${turma.professor}`;
+                listaTurmasElement.appendChild(listItem);
+            }
+        }
+
+        // Instanciando o gerenciador de turmas
+        const turmas = {};
+        const gerenciadorTurmas = new GerenciadorTurmas(turmas);
+
+        // Evento de submissão do formulário para cadastrar uma turma
+        document.getElementById('formularioTurma').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const nome = document.getElementById('nome').value;
+            const disciplina = document.getElementById('disciplina').value;
+            const professor = document.getElementById('professor').value;
+            const diasSemana = document.getElementById('diasSemana').value.split(',');
+            const horaInicio = document.getElementById('horaInicio').value;
+            const horaFim = document.getElementById('horaFim').value;
+
+            gerenciadorTurmas.cadastrar(nome, disciplina, professor, diasSemana, horaInicio, horaFim);
+            atualizarListaTurmas();
+        });
+
+        // Atualizar a lista de turmas na inicialização da página
+        atualizarListaTurmas();
+    </script>
+</body>
+</html>
