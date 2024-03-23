@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQLite Database Example</title>
+</head>
+<body>
+    <h1>SQLite Database Example</h1>
+    <table id="userData">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- User data will be dynamically added here -->
+        </tbody>
+    </table>
+
+    <script>
+        // Importing SQLite database class
+        const SQLiteDatabase = require('./SQLiteDatabase');
+
+        // Function to update table with user data
+        function updateTable() {
+            const tableBody = document.querySelector('#userData tbody');
+            tableBody.innerHTML = ''; // Clear existing table rows
+
+            // Querying all users from database and updating table
+            db.queryDatabase('', 'users', 'name', (rows) => {
+                rows.forEach((row) => {
+                    const newRow = document.createElement('tr');
+                    newRow.innerHTML = `
+                        <td>${row.id}</td>
+                        <td>${row.name}</td>
+                        <td>${row.age}</td>
+                    `;
+                    tableBody.appendChild(newRow);
+                });
+            });
+        }
+
+        // Instantiating SQLite database
+        const db = new SQLiteDatabase('database.sqlite');
+
+        // Creating users table if not exists
+        db.createTable('users', {
+            id: 'INTEGER PRIMARY KEY',
+            name: 'TEXT',
+            age: 'INTEGER'
+        });
+
+        // Inserting a user
+        db.insertRow('users', { name: 'John', age: 25 }, (id) => {
+            console.log(`User inserted with ID ${id}`);
+            updateTable(); // Update table after insertion
+        });
+
+        // Editing a user
+        db.editRow(1, 'users', { age: 26 }, () => {
+            console.log('User edited');
+            updateTable(); // Update table after edition
+        });
+
+        // Querying and logging user data
+        db.queryDatabase('John', 'users', 'name', (rows) => {
+            console.log('User data:', rows);
+        });
+
+        // Deleting a user
+        db.deleteRow(1, 'users', () => {
+            console.log('User deleted');
+            updateTable(); // Update table after deletion
+        });
+
+        // Closing database connection
+        db.close();
+    </script>
+</body>
+</html>
