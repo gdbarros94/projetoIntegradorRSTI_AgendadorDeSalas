@@ -1,0 +1,61 @@
+clear - limpa a tela
+
+ls/ - lista todas as pastas = ls -l/
+
+ls -l "/nome da pasta" = nome da pasta -- mostra onde estão os executaveis do sistema
+
+ls -l "/nome da pasta" | grep "nome do programa ou parametro" -- procura algum programa dentro da pasta bin com o comando grep
+
+cd "/nome da pasta" = troca de pasta
+
+cd = volta pra pasta anterior
+
+pwd = retorna a pasta que você esta
+
+sudo -i = troca as permissões do aluno para administrador/root
+
+apt uptade = atualiza a lista de pacotes do sistema
+
+apt upgrade -y = atualiza o sistema
+
+apt-cache search "nome do pacote" = pesquisa o arquivo/pacote
+
+apt search "nome do pacote" = pesquisa o arquivo
+
+apt search "nome do pacote" | more = pesquisa o arquivo e lista linha por linha ate encher a tela e o lista
+
+crlt o + enter + crtl x = salva um arquivo
+
+mkdir "nome da pasta" = cria uma pasta
+
+mv ./"arquivo que eu quero mover" ./"nome da pasta"/ = troca o arquivo para a pasta que eu quero
+
+apt install "nome do programa" -y ou apt install "nome do programa"
+
+nano "nome do arquivo".py = exemplo para programar em phyton
+
+python3/programa "nome do arquivo".py = que executa o codigo em phyton 
+
+rm = comando para excluir coisas no linux
+
+rm -rf "nome do arquivo" = exclui o arquivo forçadamente mesmo se tiverem erros
+
+cp "nome do arquivo que quero copiar" "nome do arquivo novo"
+
+&& = serve pra executar um comando atrás do outro
+
+cat "nome do arquivo" = executa o arquivo
+
+ps = lista TODOS processos que estão rodando agora
+
+ps aux = lista TODOS os processos que estão rodando agora
+
+df -h / = verificar quanto de memoria tem disponivel
+
+free -h = verificar a memoria RAM disponivel
+
+free -mhl = verifica com mais informações a memoria
+
+du -h ./ = verifica quanto de memoria a pasta atual esta usando de memoria
+
+ls -lash = mostra quanto que CADA arquivo está usando de memoria
