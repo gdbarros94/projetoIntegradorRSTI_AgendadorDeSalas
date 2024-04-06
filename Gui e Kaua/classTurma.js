@@ -1,4 +1,6 @@
-class GerenciadorTurmas {
+let gerenciador = new GerenciadorTurmas({});
+
+export default class GerenciadorTurmas {
     constructor(objeto) {
         this.objeto = objeto;
     }
@@ -57,3 +59,5 @@ class GerenciadorTurmas {
         return '_' + Math.random().toString(36).substr(2, 9);
     }
 }
+
+// import GerenciadorTurmas from './Gui_e_Kaua/GerenciadorTurmas.js';
