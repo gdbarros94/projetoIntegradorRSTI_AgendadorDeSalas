@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="../assets/styles/style.css">
+    
+    <title>login</title>
+</head>
+<body>
+     <div class="col col-md-8 my-5 mx-auto d-flex justify-content-center align-middle"> 
+
+    <form id="loginForm" class="form-signin flex-grow-1" action="acesso.html">
+        <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input type="text" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+        <div class="checkbox mb-3">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <p class="mt-5 mb-3 text-muted">© 2017-2018</p>
+      </form>
+    </div> 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Evita o comportamento padrão do formulário
+
+        // Obtém os valores dos campos de formulário
+        const email = document.getElementById("inputEmail").value;
+        const senha = document.getElementById("inputPassword").value;
+
+        // Chama a função de login com os dados
+        fazerLogin(email, senha);
+    });
+
+    function fazerLogin(email, senha) {
+        // Leitura do arquivo JSON de usuários
+        fetch('usuarios.json')
+            .then(response => response.json())
+            .then(data => {
+                // Verifica se o usuário e senha correspondem a algum registro no JSON
+                const usuario = data.find(user => user.usuario === email && user.senha === senha);
+                if (usuario) {
+                    // Usuário autorizado
+                    criarCookie(usuario.nome);
+                    console.log('Login autorizado para:', usuario.nome);
+                    window.location.replace("acesso.html");
+                    // Aqui você pode redirecionar o usuário para outra página, por exemplo.
+                } else {
+                    // Usuário não encontrado ou senha incorreta
+                    console.log('Usuário não autorizado. Verifique seu email e senha.');
+                }
+            })
+            .catch(error => {
+                console.error('Erro ao ler o arquivo de usuários:', error);
+            });
+    }
+     function criarCookie(nomeUsuario) {
+    const dataExpiracao = new Date();
+    // Definir tempo de expiração do cookie (1 hora)
+    dataExpiracao.setTime(dataExpiracao.getTime() + (1 * 60 * 60 * 1000));
+    const expires = "expires=" + dataExpiracao.toUTCString();
+    document.cookie = "nomeUsuario=" + nomeUsuario + ";" + expires + ";path=/";
+}
+</script>
+</body>
+</html>

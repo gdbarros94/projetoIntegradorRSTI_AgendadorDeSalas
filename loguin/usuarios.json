@@ -1,0 +1,15 @@
+[
+    {
+      "nome": "João Silva",
+      "usuario": "joaosilva",
+      "senha": "senha123",
+      "cargo": "administrador"
+    },
+    {
+      "nome": "Maria Souza",
+      "usuario": "msouza",
+      "senha": "segura456",
+      "cargo": "usuário regular"
+    }
+  ]
+  
