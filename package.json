@@ -6,6 +6,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.19.1",
+    "fs": "^0.0.1-security",
     "sqlite3": "^5.1.7"
   }
 }
