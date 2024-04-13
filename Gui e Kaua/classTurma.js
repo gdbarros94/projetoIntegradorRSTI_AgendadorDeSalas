@@ -1,3 +1,11 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+let gerenciador = new GerenciadorTurmas({});
+
+>>>>>>> c1494d1a90a58e4acebc95909e381ad057a364b1
+>>>>>>> c752912078915618cd7e2c513bb7bd3289a4e3ba
 export default class GerenciadorTurmas {
     constructor(objeto) {
         this.objeto = objeto;

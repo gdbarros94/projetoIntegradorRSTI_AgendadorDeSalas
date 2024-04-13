@@ -1,4 +1,8 @@
 {
+  "name": "meu-projeto",
+  "version": "1.0.0",
+  "description": "Descrição do meu projeto",
+  "type": "module",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.19.1",

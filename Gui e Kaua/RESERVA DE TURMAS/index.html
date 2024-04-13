@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+    <title>Reserva de Turma</title>
+</head>
+<body>
+    <h1 style="text-align: center;">Reserva de Turma</h1>
+    <form id="cadastro-form">
+        <label for="id">ID:</label>
+        <input type="number" id="id" name="id" required><br>
+
+        <label for="sala">Sala:</label>
+        <input type="text" id="sala" name="sala" required><br>
+
+        <label for="turma">Turma:</label>
+        <input type="text" id="turma" name="turma" required><br>
+
+        <label for="data">Data:</label>
+        <input type="date" id="data" name="data" required><br>
+
+        <label for="horaInicio">Hora de Início:</label>
+        <input type="time" id="horaInicio" name="horaInicio" required><br>
+
+        <label for="horaFim">Hora de Término:</label>
+        <input type="time" id="horaFim" name="horaFim" required><br>
+
+        <input type="button" value="Reservar" onclick="reservaTurma()">
+    </form>
+
+    <div id="resultado"></div>
+
+    <script src="ClassReserva.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
