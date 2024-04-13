@@ -1,4 +1,4 @@
-class Reserva {
+export default class Reserva {
     constructor(id, sala, turma, data, horaInicio, horaFim) {
         // Construtor da classe Reserva
         this.id = id; // ID da reserva
