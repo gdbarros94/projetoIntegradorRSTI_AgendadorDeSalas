@@ -1,25 +1,43 @@
-<script>
-function verificarLogin() {
-    const cookies = document.cookie.split(';');
-    for (let i = 0; i < cookies.length; i++) {
-        const cookie = cookies[i].trim();
-        if (cookie.startsWith("nomeUsuario=")) {
-            // O usuário está logado, retornar true
-            return true;
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acesso</title>
+</head>
+<body>
+    <p>Página interna</p>
+
+    <script>
+        function verificarLogin() {
+            try {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.startsWith("nomeUsuario=")) {
+                        // O usuário está logado, retornar true
+                        return true;
+                    }
+                }
+                // O usuário não está logado, retornar false
+                return false;
+            } catch (error) {
+                // Em caso de erro, imprimir o log completo no console
+                console.error('Ocorreu um erro:', error);
+                return false;
+            }
         }
-    }
-    // O usuário não está logado, retornar false
-    return false;
-}
-// Exemplo de uso:
- if (verificarLogin()) {
-    // O usuário está logado, carregar a página normalmente
-    console.log("Usuário logado.");
-    // Aqui você pode fazer o redirecionamento para a página desejada
-} else {
-    // O usuário não está logado, redirecionar para a página inicial
-    console.log("Usuário não logado. Redirecionando para a página inicial.");
-    window.location.replace("pagina_inicial.html");
-}
- 
+
+        // Exemplo de uso:
+        if (verificarLogin()) {
+            // O usuário está logado, carregar a página normalmente
+            console.log("Usuário logado.");
+            // Aqui você pode fazer o redirecionamento para a página desejada
+        } else {
+            // O usuário não está logado, redirecionar para a página inicial
+            console.log("Usuário não logado. Redirecionando para a página inicial.");
+            window.location.replace("pagina_inicial.html");
+        }
     </script>
+</body>
+</html>
