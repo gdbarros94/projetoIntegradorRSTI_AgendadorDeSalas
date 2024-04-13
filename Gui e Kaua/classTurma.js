@@ -1,19 +1,11 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-let gerenciador = new GerenciadorTurmas({});
 
->>>>>>> c1494d1a90a58e4acebc95909e381ad057a364b1
->>>>>>> c752912078915618cd7e2c513bb7bd3289a4e3ba
-export default class GerenciadorTurmas {
+class GerenciadorTurmas {
     constructor(objeto) {
         this.objeto = objeto;
     }
 
     cadastrar(nome, disciplina, professor, diasSemana, horaInicio, horaFim) {
-        const uid = this.gerarUID();
-        this.objeto[uid] = {
+        this.objeto = {
             nome,
             disciplina,
             professor,

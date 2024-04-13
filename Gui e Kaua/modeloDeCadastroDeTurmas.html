@@ -7,7 +7,7 @@
     <title>Gerenciador de Turmas</title>
     <!-- Incluindo Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-   
+
 </head>
 
 <body class="bg-gray-100">
@@ -39,7 +39,8 @@
                 <label for="horaFim" class="block text-gray-700">Horário de Fim:</label>
                 <input type="text" class="form-input mt-1 block w-full" id="horaFim" name="horaFim" required>
             </div>
-            <button type="button" onclick="cadastrarTurma()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Cadastrar</button>
+            <button onclick="cadastrarTurma()"
+                class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Cadastrar</button>
         </form>
     </div>
 
@@ -53,9 +54,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="classTurma.js"></script>
     <script type="module">
-
-        let gerenciador = new GerenciadorTurmas({});
-
         function cadastrarTurma() {
             const nome = document.getElementById('nome').value;
             const disciplina = document.getElementById('disciplina').value;
@@ -64,49 +62,29 @@
             const horaInicio = document.getElementById('horaInicio').value;
             const horaFim = document.getElementById('horaFim').value;
 
-            let uid = gerenciador.cadastrar(nome, disciplina, professor, diasSemana, horaInicio, horaFim);
-
-            if (uid) {
-                let novaTurma = gerenciador.buscarPorId(uid);
-                atualizarListaTurmas(novaTurma);
-            } else {
-                alert('Erro ao cadastrar a turma.');
-            }
+            let novaTurma = new GerenciadorTurmas(nome, disciplina, professor, diasSemana, horaInicio, horaFim);
+            novaTurma.cadastrar();
+            atualizarListaTurmas(nome, disciplina, professor, diasSemana, horaInicio, horaFim);
         }
 
-        function atualizarListaTurmas(turma) {
+        function atualizarListaTurmas(nome, disciplina, professor, diasSemana, horaInicio, horaFim) {
             const listaTurmas = document.getElementById('listaTurmas');
-            const listItem = document.createElement('li');
-            listItem.classList.add('bg-white', 'p-4', 'border', 'border-gray-300', 'rounded-md', 'mb-2');
-            listItem.innerHTML = `
-                <h3 class="font-bold">${turma.nome}</h3>
-                <p>${turma.disciplina} - ${turma.professor}</p>
-                <p>Dias: ${turma.diasSemana.join(', ')}</p>
-                <p>Horário: ${turma.horaInicio} - ${turma.horaFim}</p>
-                <button onclick="excluirTurma('${turma.uid}')" class="bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600">Excluir</button>
+            const listarTurmas = document.createElement('div');
+            listarTurmas.classList.add('mb-4');
+            listarTurmas.innerHTML = `
+                <p>Nome: ${nome}<p>
+                <p>Disciplina: ${disciplina}</p>
+                <p>Professor: ${professor}</p>
+                <p>Dias: ${diasSemana}</p>
+                <p>Horário de inicio: ${horaInicio}<p>
+                <p>Horário de fim: ${horaFim}</p>
             `;
-            listaTurmas.appendChild(listItem);
+            listaTurmas.appendChild(listarTurmas);
         }
-
-        function excluirTurma(uid) {
-            if (gerenciador.excluir(uid)) {
-                // Atualizar a lista após excluir
-                listarTurmas();
-            } else {
-                alert('Erro ao excluir a turma.');
-            }
-        }
-
-        function listarTurmas() {
-            const listaTurmas = document.getElementById('listaTurmas');
-            listaTurmas.innerHTML = ''; // Limpar a lista atual
-
-            const turmas = gerenciador.listar();
-            for (let uid in turmas) {
-                atualizarListaTurmas(turmas[uid]);
-            }
-        }
+   
+        atualizarListaTurmas();
     </script>
+
 </body>
 
 </html>
