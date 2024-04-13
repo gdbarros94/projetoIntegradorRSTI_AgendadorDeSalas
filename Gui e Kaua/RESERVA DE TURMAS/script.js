@@ -1,12 +1,13 @@
 function reservaTurma() {
-    const id = document.getElementById('id').value;
     const sala = document.getElementById('sala').value;
+    const id = sala
     const turma = document.getElementById('turma').value;
     const data = document.getElementById('data').value;
     const horaInicio = document.getElementById('horaInicio').value;
     const horaFim = document.getElementById('horaFim').value;
 
     const novaReserva = new Reserva(id, sala, turma, data, horaInicio, horaFim);
+    novaReserva.value
 
     novaReserva.cadastrar();
     novaReserva.verificarConflito();

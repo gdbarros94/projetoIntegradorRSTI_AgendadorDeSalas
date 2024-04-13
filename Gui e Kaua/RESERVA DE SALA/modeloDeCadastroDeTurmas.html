@@ -48,42 +48,31 @@
         <h2 class="text-2xl mb-4">Lista de Turmas</h2>
         <!-- As turmas serão listadas aqui -->
     </div>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="classTurma.js"></script>
-    <script type="module">
+    
+    <script src="ClassTurma.js"></script>
+    <script>
         function cadastrarTurma() {
-            const nome = document.getElementById('nome').value;
-            const disciplina = document.getElementById('disciplina').value;
-            const professor = document.getElementById('professor').value;
-            const diasSemana = document.getElementById('diasSemana').value.split(',');
-            const horaInicio = document.getElementById('horaInicio').value;
-            const horaFim = document.getElementById('horaFim').value;
+            const nome = document.getElementById('nome').value
+            const disciplina = document.getElementById('disciplina').value
+            const professor = document.getElementById('professor').value
+            const diasSemana = document.getElementById('diasSemana').value
+            const horaInicio = document.getElementById('horaInicio').value
+            const horaFim = document.getElementById('horaFim').value
 
-            let novaTurma = new GerenciadorTurmas(nome, disciplina, professor, diasSemana, horaInicio, horaFim);
-            novaTurma.cadastrar();
-            atualizarListaTurmas(nome, disciplina, professor, diasSemana, horaInicio, horaFim);
-        }
+            const cadastrarTurma = new Turma(nome, disciplina, professor, diasSemana, horaInicio, horaFim)
+            cadastrarTurma.cadastrar()
 
-        function atualizarListaTurmas(nome, disciplina, professor, diasSemana, horaInicio, horaFim) {
-            const listaTurmas = document.getElementById('listaTurmas');
-            const listarTurmas = document.createElement('div');
-            listarTurmas.classList.add('mb-4');
-            listarTurmas.innerHTML = `
-                <p>Nome: ${nome}<p>
-                <p>Disciplina: ${disciplina}</p>
-                <p>Professor: ${professor}</p>
-                <p>Dias: ${diasSemana}</p>
-                <p>Horário de inicio: ${horaInicio}<p>
-                <p>Horário de fim: ${horaFim}</p>
-            `;
-            listaTurmas.appendChild(listarTurmas);
+            const listaTurmas = document.getElementById('listaTurmas')  
+            listaTurmas.innerHTML = `
+                <p>Nome: ${cadastrarTurma.nome}</p>
+                <p>disciplina: ${cadastrarTurma.disciplina}</p>
+                <p>professor: ${cadastrarTurma.professor}</p>
+                <p>dias da semana: ${cadastrarTurma.diasSemana}</p>
+                <p>horario inicio: ${cadastrarTurma.horaInicio}</p>
+                <p>horario final: ${cadastrarTurma.horaFim}</p>
+            ` 
         }
-   
-        atualizarListaTurmas();
-    </script>
+    </script>    
 
 </body>
 

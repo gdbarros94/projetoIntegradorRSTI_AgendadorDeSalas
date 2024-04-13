@@ -1,39 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="style.css">
     <title>Reserva de Turma</title>
+
+    <!-- Incluindo Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <h1 style="text-align: center;">Reserva de Turma</h1>
-    <form id="cadastro-form">
-        <label for="id">ID:</label>
-        <input type="number" id="id" name="id" required><br>
 
-        <label for="sala">Sala:</label>
-        <input type="text" id="sala" name="sala" required><br>
+<body class="bg-gray-100 m-5">
+    <h1 class="text-center text-2xl mt-10">Reserva de Turma</h1>
+    <div class="container mx-auto mt-10 p-6 bg-white rounded-lg shadow-lg">
+        <form id="cadastro-form">
+            <div class="mb-4">
+                <label for="sala" class="block text-gray-700"><b>Sala:</b></label>
+                <input type="text" id="sala" name="sala" class="form-input mt-1 block w-full bg-gray-100 rounded" required>
+            </div>
+            <div class="mb-4">
+                <label for="turma" class="block text-gray-700"><b>Turma:</b></label>
+                <input type="text" id="turma" name="turma" class="form-input mt-1 block w-full bg-gray-100 rounded" required>
+            </div>
+            <div class="mb-4">
+                <label for="data" class="block text-gray-700"><b>Data:</b></label>
+                <input type="date" id="data" name="data" class="form-input mt-1 block w-full bg-gray-100 rounded" required>
+            </div>
+            <div class="mb-4">
+                <label for="horaInicio" class="block text-gray-700"><b>Hora de Início:</b></label>
+                <input type="time" id="horaInicio" name="horaInicio" class="form-input mt-1 block w-full bg-gray-100 rounded" required>
+            </div>
+            <div class="mb-4">
+                <label for="horaFim" class="block text-gray-700"><b>Hora de Término:</b></label>
+                <input type="time" id="horaFim" name="horaFim" class="form-input mt-1 block w-full bg-gray-100 rounded" required>
+            </div>
+            <button type="button" onclick="reservaTurma()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Reservar</button>
+        </form>
+    </div>
 
-        <label for="turma">Turma:</label>
-        <input type="text" id="turma" name="turma" required><br>
-
-        <label for="data">Data:</label>
-        <input type="date" id="data" name="data" required><br>
-
-        <label for="horaInicio">Hora de Início:</label>
-        <input type="time" id="horaInicio" name="horaInicio" required><br>
-
-        <label for="horaFim">Hora de Término:</label>
-        <input type="time" id="horaFim" name="horaFim" required><br>
-
-        <input type="button" value="Reservar" onclick="reservaTurma()">
-    </form>
-
-    <div id="resultado"></div>
+    <div id="resultado" class="container mx-auto mt-10 p-6 bg-white rounded-lg shadow-lg font-bold"></div>
 
     <script src="ClassReserva.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>
