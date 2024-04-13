@@ -39,41 +39,20 @@
                 <label for="horaFim" class="block text-gray-700">Horário de Fim:</label>
                 <input type="text" class="form-input mt-1 block w-full" id="horaFim" name="horaFim" required>
             </div>
-            <button onclick="cadastrarTurma()"
+            <button type="button" onclick="cadastrarTurma()"
                 class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Cadastrar</button>
         </form>
     </div>
 
-    <div id="listaTurmas" class="container mx-auto mt-6 p-4 bg-white rounded-lg shadow-lg">
+    <div class="container mx-auto mt-6 p-4 bg-white rounded-lg shadow-lg">
         <h2 class="text-2xl mb-4">Lista de Turmas</h2>
+
+        <div id="listaTurmas"></div>
         <!-- As turmas serão listadas aqui -->
     </div>
     
     <script src="ClassTurma.js"></script>
-    <script>
-        function cadastrarTurma() {
-            const nome = document.getElementById('nome').value
-            const disciplina = document.getElementById('disciplina').value
-            const professor = document.getElementById('professor').value
-            const diasSemana = document.getElementById('diasSemana').value
-            const horaInicio = document.getElementById('horaInicio').value
-            const horaFim = document.getElementById('horaFim').value
-
-            const cadastrarTurma = new Turma(nome, disciplina, professor, diasSemana, horaInicio, horaFim)
-            cadastrarTurma.cadastrar()
-
-            const listaTurmas = document.getElementById('listaTurmas')  
-            listaTurmas.innerHTML = `
-                <p>Nome: ${cadastrarTurma.nome}</p>
-                <p>disciplina: ${cadastrarTurma.disciplina}</p>
-                <p>professor: ${cadastrarTurma.professor}</p>
-                <p>dias da semana: ${cadastrarTurma.diasSemana}</p>
-                <p>horario inicio: ${cadastrarTurma.horaInicio}</p>
-                <p>horario final: ${cadastrarTurma.horaFim}</p>
-            ` 
-        }
-    </script>    
-
+    <script src="script.js"></script>
 </body>
 
 </html>

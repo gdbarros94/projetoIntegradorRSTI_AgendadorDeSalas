@@ -11,7 +11,7 @@ class Reserva {
     static reservas = [];
 
     cadastrar() {
-        Reserva.reservas.push(this);
+        Reserva.reservas.push();
         console.log(`Reserva com ID ${this.id} cadastrada com sucesso.`);
     }
 

@@ -13,7 +13,8 @@ function reservaTurma() {
     novaReserva.verificarConflito();
     
     const resultado = document.getElementById('resultado');
-    resultado.innerHTML = `
+    resultado.innerHTML += `
+        <br>
         <p>ID: ${novaReserva.id}</p>
         <p>Sala: ${novaReserva.sala}</p>
         <p>Turma: ${novaReserva.turma}</p>
