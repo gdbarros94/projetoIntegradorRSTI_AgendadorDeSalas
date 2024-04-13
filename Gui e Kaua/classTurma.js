@@ -1,4 +1,4 @@
-class GerenciadorTurmas {
+export default class GerenciadorTurmas {
     constructor(objeto) {
         this.objeto = objeto;
     }

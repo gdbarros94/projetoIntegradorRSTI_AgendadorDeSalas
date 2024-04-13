@@ -1,4 +1,4 @@
-class Sala {
+export default class Sala {
   constructor(id, nome, capacidade, descricao) {
     this.id = id;
     this.nome = nome;
