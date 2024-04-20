@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Criar Novo Usuário</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #fff;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .registration-form {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 30px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #fff;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+    .registration-form h2 {
+      margin-bottom: 30px;
+      color: black;
+      font-weight: 600;
+    }
+    .btn-primary {
+      background-color: #f90;
+      border-color: #f90;
+    }
+    .btn-primary:hover {
+      background-color: #f70;
+      border-color: #f70;
+    }
+
+    p {
+      color: #f70;
+    }
+
+    a {
+      color: #f70;
+    }
+
+    a:hover {
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="registration-form">
+          <h2 class="text-center">Criar Novo Usuário</h2>
+          <!-- formulário de registro de novo usuário -->
+          <form id="registrationForm">
+            <div class="form-group">
+              <input type="text" id="inputNome" class="form-control" placeholder="Seu nome" required>
+            </div>
+            <div class="form-group">
+              <input type="email" id="inputEmail" class="form-control" placeholder="Seu email" required>
+            </div>
+            <div class="form-group">
+              <input type="password" id="inputPassword" class="form-control" placeholder="Sua senha" required>
+            </div>
+            <div class="form-group">
+              <input type="text" id="inputCargo" class="form-control" placeholder="Cargo" required>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-block">Registrar</button>
+            </div>
+            <div class="form-group">
+              <a href="./login.html"><p class="text-center color">Voltar ao login</p></a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- scripts omitidos por brevidade -->
+
+  <script>
+    document.getElementById("registrationForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Evita o comportamento padrão do formulário
+
+        // Obtém os valores dos campos de formulário
+        const nome = document.getElementById("inputNome").value;
+        const email = document.getElementById("inputEmail").value;
+        const senha = document.getElementById("inputPassword").value;
+        const cargo = document.getElementById("inputCargo").value;
+
+        // Envia uma requisição para a API de registro de novo usuário
+        fetch('http://172.20.48.182:3000/registrar', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ nome: nome, email: email, senha: senha, cargo: cargo })
+        })
+        .then(response => {
+            if (response.ok) {
+                console.log('Usuário registrado com sucesso');
+                // Aqui você pode redirecionar o usuário para outra página ou exibir uma mensagem de sucesso
+            } else {
+                console.error('Erro ao registrar novo usuário:', response.statusText);
+            }
+        })
+        .catch(error => {
+            console.error('Erro ao registrar novo usuário:', error);
+        });
+    });
+  </script>
+
+</body>
+</html>

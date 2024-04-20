@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tela de Login</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #fff;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .login-form {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 30px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #fff;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .login-form h2 {
+      margin-bottom: 30px;
+      color: black;
+      font-weight: 600;
+    }
+
+    .btn-primary {
+      background-color: #f90;
+      border-color: #f90;
+    }
+
+    .btn-primary:hover {
+      background-color: #f70;
+      border-color: #f70;
+    }
+
+    .forgot-password-link {
+      color: #f90;
+    }
+
+    .forgot-password-link:hover {
+      color: #f70;
+      text-decoration: none;
+    }
+
+    .register-link {
+      color: #f90;
+    }
+
+    .register-link:hover {
+      color: #f70;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="login-form">
+          <h2 class="text-center">Login</h2>
+          <!-- formulário de login -->
+          <form id="loginForm">
+            <div class="form-group">
+              <input type="email" id="inputEmail" class="form-control" placeholder="Seu email" required>
+            </div>
+            <div class="form-group">
+              <input type="password" id="inputPassword" class="form-control" placeholder="Sua senha" required>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+            </div>
+            <div class="form-group text-center">
+              <a href="./forgotPassword.html" class="forgot-password-link">Esqueceu sua senha?</a>
+            </div>
+            <div class="form-group text-center">
+              <span>Não tem uma conta? </span><a href="./registrar.html" class="register-link">Registre-se aqui</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- scripts omitidos por brevidade -->
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function (event) {
+      event.preventDefault(); // Evita o comportamento padrão do formulário
+
+      // Obtém os valores dos campos de formulário
+      const email = document.getElementById("inputEmail").value;
+      const senha = document.getElementById("inputPassword").value;
+
+      // Envia uma requisição GET para a API de login
+      fetch(`http://172.20.48.182:3000/login?email=${email}&senha=${senha}`)
+        .then(response => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            throw new Error('Email ou senha incorretos');
+          }
+        })
+        .then(data => {
+          console.log('Login bem-sucedido:', data.usuario);
+          // Redirecionar o usuário para a página ../public/index.html
+          window.location.replace("../public/index.html");
+        })
+        .catch(error => {
+          console.error('Erro ao fazer login:', error.message);
+        });
+    });
+  </script>
+
+</body>
+
+</html>
