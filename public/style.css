@@ -1,0 +1,228 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.link {
+    text-decoration: none; /* Remove o sublinhado padrão */
+    color: inherit; 
+}
+
+/* Estilos para Navbar */
+nav.upper-navbar {
+    background-color: #fff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav.upper-navbar .logo img {
+    width: 175px;
+    height: auto;
+}
+
+nav.upper-navbar .region-title {
+    color: #333;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+nav.upper-navbar .social-links {
+    display: flex;
+    gap: 10px;
+}
+
+nav.upper-navbar .social-links a {
+    color: #fff;
+    border-radius: 50%;
+    padding: 7px;
+    
+}
+
+nav.lower-navbar {
+    background-color: #F77D0C;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+nav.lower-navbar .menu {
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px;
+    gap: 20px;
+}
+
+nav.lower-navbar .menu a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+nav.lower-navbar .menu a:hover {
+    color: #cdcdcd;
+}
+
+/* Seção Banner */
+.banner {
+    background-color: #F77D0C;
+    color: #fff;
+    text-align: center;
+    padding: 50px 0;
+}
+
+.banner h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+/* Seção de Recursos */
+.features {
+    display: flex;
+    justify-content: space-around;
+    margin: 50px 0;
+    cursor: pointer;
+}
+
+.feature {
+    text-align: center;
+    flex: 1;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin: 0 10px;
+}
+
+.feature i {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.feature h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+/* Seção Sobre o Sistema */
+.about {
+    background-color: #003A7B;
+    color: #fff;
+    text-align: center;
+    padding: 100px 0;
+}
+
+.about h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.about p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+.about a {
+    background-color: #F77D0C;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.about a:hover {
+    background-color: #e2730c;
+}
+
+/* Estilos adicionais personalizados */
+.bg-senac-blue {
+    background-color: #003A7B;
+}
+.text-senac-blue {
+    color: #003A7B;
+}
+.bg-senac-yellow {
+    background-color: #F77D0C;
+}
+.text-senac-yellow {
+    color: #F77D0C;
+}
+.bg-social {
+    background-color: #003A7B;
+    border-radius: 50%;
+    padding: 10px;
+    animation: pulse 2s infinite alternate; /* Adicionando animação de pulso */
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.1);
+    }
+}
+
+img {
+    width: 175px;
+    height: auto;
+}
+
+/* Estilos para o conteúdo principal */
+main {
+    flex: 1;
+    padding-top: 20px;
+    width: 100%;
+    height: 100vh;
+    opacity: 0;
+    animation: fade-in 1s forwards; /* Adicionando animação de fade-in */
+}
+
+footer {
+    padding-top: 50px;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Mídia para telas menores */
+@media screen and (max-width: 768px) {
+    nav.upper-navbar .logo img {
+        width: 125px; /* Reduzir tamanho do logo em telas menores */
+    }
+
+    nav.upper-navbar .region-title {
+        font-size: 1rem; /* Reduzir tamanho do título da região em telas menores */
+    }
+
+    nav.upper-navbar .social-links {
+        display: none; /* Esconder links sociais em telas menores */
+    }
+
+    nav.lower-navbar .menu {
+        padding: 10px; /* Reduzir padding em telas menores */
+        text-align: center;
+    }
+
+    .banner h1 {
+        font-size: 1.5rem; /* Reduzir tamanho do título do banner em telas menores */
+    }
+
+    .about h2 {
+        font-size: 1.5rem; /* Reduzir tamanho do título da seção "Sobre o Sistema" em telas menores */
+    }
+
+    .about p {
+        font-size: 1rem; /* Reduzir tamanho do texto da seção "Sobre o Sistema" em telas menores */
+    }
+}
