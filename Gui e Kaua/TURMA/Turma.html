@@ -8,12 +8,27 @@
     <!-- Incluindo Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 
+    <style>
+        /* Personalização de estilos */
+        body {
+            background-color: #ffffff; /* Fundo branco */
+        }
+
+        /* Detalhes na cor #F77D0C */
+        .text-theme-color {
+            color: #F77D0C;
+        }
+
+        .bg-theme-color {
+            background-color: #F77D0C;
+        }
+    </style>
 </head>
 
 <body class="bg-gray-100">
 
     <div class="container mx-auto mt-10 p-6 bg-white rounded-lg shadow-lg">
-        <h2 class="text-2xl mb-4">Cadastro de Turma</h2>
+        <h2 class="text-theme-color text-2xl mb-4">Cadastro de Turma</h2>
         <form>
             <div class="mb-4">
                 <label for="nome" class="block text-gray-700">Nome:</label>
@@ -40,12 +55,12 @@
                 <input type="text" class="form-input mt-1 block w-full" id="horaFim" name="horaFim" required>
             </div>
             <button type="button" onclick="cadastrarTurma()"
-                class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Cadastrar</button>
+                class="bg-theme-color text-white px-4 py-2 rounded hover:bg-orange-700">Cadastrar</button>
         </form>
     </div>
 
     <div class="container mx-auto mt-6 p-4 bg-white rounded-lg shadow-lg">
-        <h2 class="text-2xl mb-4">Lista de Turmas</h2>
+        <h2 class="text-theme-color text-2xl mb-4">Lista de Turmas</h2>
 
         <div id="listaTurmas"></div>
         <!-- As turmas serão listadas aqui -->

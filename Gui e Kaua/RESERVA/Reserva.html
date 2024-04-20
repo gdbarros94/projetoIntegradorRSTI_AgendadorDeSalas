@@ -5,13 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reserva de Turma</title>
-
-    <!-- Incluindo Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Adicione o link para o Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .text-theme-color {
+            color: #F77D0C;
+        }
+        .bg-theme-color {
+            background-color: #F77D0C;
+        }
+        .hover\:bg-theme-color:hover {
+            background-color: #F77D0C;
+        }
+    </style>
 </head>
 
 <body class="bg-gray-100 m-5">
-    <h1 class="text-center text-2xl mt-10">Reserva de Turma</h1>
+    <h1 class="text-center text-theme-color text-2xl mt-10">Agendamento de Turma</h1>
     <div class="container mx-auto mt-10 p-6 bg-white rounded-lg shadow-lg">
         <form id="cadastro-form">
             <div class="mb-4">
@@ -34,7 +44,7 @@
                 <label for="horaFim" class="block text-gray-700"><b>Hora de Término:</b></label>
                 <input type="time" id="horaFim" name="horaFim" class="form-input mt-1 block w-full rounded" required>
             </div>
-            <button type="button" onclick="reservaTurma()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Reservar</button>
+            <button type="button" onclick="reservaTurma()" class="bg-theme-color text-white px-4 py-2 rounded">Reservar</button>
         </form>
     </div>
 
