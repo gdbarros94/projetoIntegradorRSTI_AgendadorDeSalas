@@ -73,6 +73,6 @@ function atualizarBanco() {
     fs.writeFileSync(__dirname + '/banco.json', JSON.stringify(banco, null, 2));
 }
 
-app.listen(port, '172.20.48.182', () => {
-    console.log(`Servidor rodando em http://172.20.48.182:${port}`);
+app.listen(port, '172.20.48.138', () => {
+    console.log(`Servidor rodando em http://172.20.48.138:${port}`);
 });

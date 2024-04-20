@@ -1,9 +1,15 @@
 class Turma {
     constructor() {
+        this.baseUrl = 'http://172.20.48.182:3000/salas';
         this.turmas = [];
     }
 
-    cadastrar(nome, disciplina, professor, diasSemana, horaInicio, horaFim) {
+    async carregarTurmas() {
+        const response = await fetch(this.baseUrl);
+        this.turmas = await response.json();
+    }
+
+    async cadastrar(nome, disciplina, professor, diasSemana, horaInicio, horaFim) {
         const turma = {
             uid: this.gerarUID(),
             nome,
@@ -13,11 +19,21 @@ class Turma {
             horaInicio,
             horaFim
         };
-        this.turmas.push(turma);
-        return turma;
+        
+        const response = await fetch(this.baseUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(turma),
+        });
+
+        const novaTurma = await response.json();
+        this.turmas.push(novaTurma);
+        return novaTurma;
     }
 
-    editar(uid, nome, disciplina, professor, diasSemana, horaInicio, horaFim) {
+    async editar(uid, nome, disciplina, professor, diasSemana, horaInicio, horaFim) {
         const turma = this.buscarPorId(uid);
         if (turma) {
             turma.nome = nome;
@@ -26,14 +42,27 @@ class Turma {
             turma.diasSemana = diasSemana;
             turma.horaInicio = horaInicio;
             turma.horaFim = horaFim;
+
+            await fetch(`${this.baseUrl}/${uid}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(turma),
+            });
+
             return true;
         }
         return false; // Turma não encontrada
     }
 
-    excluir(uid) {
+    async excluir(uid) {
         const index = this.turmas.findIndex(turma => turma.uid === uid);
         if (index !== -1) {
+            await fetch(`${this.baseUrl}/${uid}`, {
+                method: 'DELETE',
+            });
+
             this.turmas.splice(index, 1);
             return true;
         }
