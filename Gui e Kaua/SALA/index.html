@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de Salas</title>
+    <!-- Adicione o link para o Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 m-5">
+    <h1 class="text-center text-2xl my-10">Gerenciamento de Salas</h1>
+
+    <!-- Formulário para cadastrar uma nova sala -->
+    <div class="container mx-auto mt-10 p-6 bg-white rounded-lg shadow-lg">
+    <h2 class="text-lg">Cadastrar Nova Sala</h2>
+    <form id="form-cadastro" class="mb-6">
+        <label for="id" class="block">ID:</label>
+        <input type="text" id="id" name="id" class="form-input mt-1 block w-full rounded" required>
+
+        <label for="nome" class="block mt-4">Nome:</label>
+        <input type="text" id="nome" name="nome" class="form-input mt-1 block w-full rounded" required>
+
+        <label for="capacidade" class="block mt-4">Capacidade:</label>
+        <input type="number" id="capacidade" name="capacidade" class="form-input mt-1 block w-full rounded" required>
+
+        <label for="descricao" class="block mt-4">Descrição:</label>
+        <textarea id="descricao" name="descricao" class="form-textarea mt-1 block w-full rounded"></textarea>
+
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 mt-4 rounded hover:bg-blue-600">Cadastrar Sala</button>
+    </form>
+
+    <!-- Lista de salas cadastradas -->
+    <h2 class="text-lg">Salas Cadastradas</h2>
+    <div id="lista-salas" class="mb-6"></div>
+
+    <!-- Formulário para buscar sala por ID -->
+    <h2 class="text-lg">Buscar Sala por ID</h2>
+    <form id="form-busca" class="mb-6">
+        <label for="id-busca" class="block">ID:</label>
+        <input type="text" id="id-busca" name="id-busca" class="form-input mt-1 block w-full rounded" required>
+
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 mt-4 rounded hover:bg-blue-600">Buscar</button>
+    </form>
+
+    <!-- Resultado da busca por ID -->
+    <div id="resultado-busca" class="font-bold"></div>
+</div>
+
+    <!-- Scripts para manipulação da classe Sala -->
+    <script src="ClassSala.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

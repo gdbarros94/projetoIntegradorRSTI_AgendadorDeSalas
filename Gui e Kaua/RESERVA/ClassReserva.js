@@ -1,3 +1,4 @@
+// Definição da classe Reserva com o construtor e os atributos id, sala, turma, data, horaInicio e horaFim
 class Reserva {
     constructor(id, sala, turma, data, horaInicio, horaFim) {
         this.id = id;
@@ -8,13 +9,16 @@ class Reserva {
         this.horaFim = horaFim;
     }
 
+    // Definição de uma propriedade estática reservas para armazenar todas as reservas
     static reservas = [];
 
+    // Método para cadastrar uma nova reserva
     cadastrar() {
         Reserva.reservas.push();
         console.log(`Reserva com ID ${this.id} cadastrada com sucesso.`);
     }
 
+    // Método para editar uma reserva existente
     editar(novaReserva) {
         const index = Reserva.reservas.findIndex(reserva => reserva.id === this.id);
         if (index !== -1) {
@@ -25,11 +29,13 @@ class Reserva {
         }
     }
 
+    // Método para excluir uma reserva existente
     excluir() {
         Reserva.reservas = Reserva.reservas.filter(reserva => reserva.id !== this.id);
         console.log(`Reserva com ID ${this.id} excluída com sucesso.`);
     }
 
+    // Método estático para listar todas as reservas
     static listar() {
         console.log("Listagem de todas as reservas:");
         Reserva.reservas.forEach(reserva => {
@@ -37,6 +43,7 @@ class Reserva {
         });
     }
 
+    // Método estático para buscar uma reserva por ID
     static buscarPorId(id) {
         const reserva = Reserva.reservas.find(reserva => reserva.id === id);
         if (reserva) {
@@ -47,6 +54,7 @@ class Reserva {
         }
     }
 
+    // Método para verificar conflito de horário com outras reservas
     verificarConflito() {
         const conflito = Reserva.reservas.some(reserva => {
             return (
