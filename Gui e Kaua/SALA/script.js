@@ -56,6 +56,46 @@ document.getElementById('form-busca').addEventListener('submit', function (event
     }
 });
 
+// Event listener para o formulário de edição de sala
+document.getElementById('form-editar').addEventListener('submit', function (event) {
+    event.preventDefault(); // Impede o envio padrão do formulário
+
+    // Obtém os valores do formulário de edição
+    const id = document.getElementById('idEdit').value;
+    const nome = document.getElementById('nomeEdit').value;
+    const capacidade = document.getElementById('capacidadeEdit').value;
+    const descricao = document.getElementById('descricaoEdit').value;
+
+    // Edita a sala com base no ID fornecido
+    Sala.editar(id, nome, capacidade, descricao);
+
+    // Limpa os campos do formulário
+    document.getElementById('idEdit').value = '';
+    document.getElementById('nomeEdit').value = '';
+    document.getElementById('capacidadeEdit').value = '';
+    document.getElementById('descricaoEdit').value = '';
+
+    // Atualiza a lista de salas cadastradas na página
+    exibirSalas();
+});
+
+// Event listener para o formulário de exclusão de sala
+document.getElementById('form-excluir').addEventListener('submit', function (event) {
+    event.preventDefault(); // Impede o envio padrão do formulário
+
+    // Obtém o ID da sala a ser excluída
+    const idExcluir = document.getElementById('idExcluir').value;
+
+    // Exclui a sala com base no ID fornecido
+    Sala.excluir(idExcluir);
+
+    // Limpa o campo do formulário
+    document.getElementById('idExcluir').value = '';
+
+    // Atualiza a lista de salas cadastradas na página
+    exibirSalas();
+});
+
 // Exibe as salas cadastradas ao carregar a página
 window.onload = function () {
     exibirSalas();
