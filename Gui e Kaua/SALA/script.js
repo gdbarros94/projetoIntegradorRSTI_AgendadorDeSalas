@@ -24,24 +24,31 @@ function idExists(id, salas) {
 document.getElementById('form-cadastro').addEventListener('submit', function (event) {
     event.preventDefault(); // Impede o envio padrão do formulário
 
-    let id;
     const nome = document.getElementById('nome').value;
-    const capacidade = document.getElementById('capacidade').value;
+    const capacidadeStr = document.getElementById('capacidade').value; // Obtém a capacidade como string
+    const capacidade = parseInt(capacidadeStr); // Converte a capacidade para número inteiro
     const descricao = document.getElementById('descricao').value;
 
     fetch('http://172.20.48.182:3000/salas')
         .then(response => response.json())
         .then(salas => {
+            let id;
             do {
                 id = Math.floor(Math.random() * 50) + 1; // Gera um ID aleatório entre 1 e 50
             } while (idExists(id, salas));
 
-            // Cria um objeto com os dados da nova sala
+            // Criando a nova sala com os campos adicionais vazios
             const novaSala = {
                 id,
                 nome,
                 capacidade,
-                descricao
+                descricao,
+                professor: "",
+                disciplina: "",
+                dias_da_semana: [],
+                horarioInicio: "",
+                horarioFim: "",
+                data: ""
             };
 
             // Envia uma solicitação POST para cadastrar a nova sala
@@ -65,9 +72,6 @@ document.getElementById('form-cadastro').addEventListener('submit', function (ev
         })
         .catch(error => console.error('Erro ao cadastrar sala:', error));
 });
-
-// O restante do código permanece o mesmo...
-
 
 // Event listener para o formulário de edição de sala
 document.getElementById('form-editar').addEventListener('submit', function (event) {

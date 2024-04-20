@@ -1,0 +1,82 @@
+{
+  "salas": [
+    {
+      "id": 1,
+      "nome": "Sala de Informática",
+      "capacidade": 32,
+      "descricao": "Sala equipada com computadores para aulas práticas de informática.",
+      "professor": "João Silva",
+      "disciplina": "Introdução à Programação",
+      "dias_da_semana": [
+        "Segunda-feira",
+        "Quarta-feira",
+        "Sexta-feira"
+      ],
+      "horarioInicio": "08:00",
+      "horarioFim": "10:00",
+      "data": "2024-04-20"
+    },
+    {
+      "id": 2,
+      "nome": "Sala de Matemática",
+      "capacidade": 25,
+      "descricao": "Sala equipada com quadro branco e projetor para aulas teóricas de matemática.",
+      "professor": "Maria Oliveira",
+      "disciplina": "Álgebra Linear",
+      "dias_da_semana": [
+        "Terça-feira",
+        "Quinta-feira"
+      ],
+      "horarioInicio": "10:30",
+      "horarioFim": "12:00",
+      "data": "2024-04-21"
+    },
+    {
+      "id": 3,
+      "nome": "Sala de Física",
+      "capacidade": 30,
+      "descricao": "Sala equipada com laboratório para experimentos de física.",
+      "professor": "Carlos Santos",
+      "disciplina": "Física Experimental",
+      "dias_da_semana": [
+        "Segunda-feira",
+        "Quarta-feira",
+        "Sexta-feira"
+      ],
+      "horarioInicio": "10:00",
+      "horarioFim": "12:00",
+      "data": "2024-04-22"
+    },
+    {
+      "id": 4,
+      "nome": "Sala de Química",
+      "capacidade": 28,
+      "descricao": "Sala equipada com bancadas para experimentos de química.",
+      "professor": "Ana Rodrigues",
+      "disciplina": "Química Orgânica",
+      "dias_da_semana": [
+        "Terça-feira",
+        "Quinta-feira"
+      ],
+      "horarioInicio": "08:30",
+      "horarioFim": "10:30",
+      "data": "2024-04-23"
+    },
+    {
+      "id": 5,
+      "nome": "Sala de Biologia",
+      "capacidade": 35,
+      "descricao": "Sala equipada com microscópios e material para estudos de biologia.",
+      "professor": "Mariana Costa",
+      "disciplina": "Biologia Celular",
+      "dias_da_semana": [
+        "Segunda-feira",
+        "Quarta-feira",
+        "Sexta-feira"
+      ],
+      "horarioInicio": "14:00",
+      "horarioFim": "16:00",
+      "data": "2024-04-24"
+    }
+  ]
+}
