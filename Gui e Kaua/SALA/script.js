@@ -1,21 +1,32 @@
-// Função para exibir a lista de salas cadastradas
 function exibirSalas(idBusca) {
     fetch(`http://172.20.48.122:3000/salas/${idBusca}`)
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Erro ao buscar sala');
+            }
+            return response.json();
+        })
         .then(sala => {
             const listaSalas = document.getElementById('lista-salas');
             listaSalas.innerHTML = ''; // Limpa o conteúdo anterior
 
-            if (sala) {
+            if ((sala && Object.keys(sala).length !== 0) !== true) {
+                const resultadoBusca = document.getElementById('resultado-busca');
+                resultadoBusca.textContent = 'Nenhuma sala encontrada com o ID fornecido.';
+                console.log("asefasfsdafas");
+                listaSalas.appendChild(resultadoBusca);
+
+                
+            } else {
                 const salaItem = document.createElement('p');
                 salaItem.textContent = `ID: ${sala.id}, Nome: ${sala.nome}, Capacidade: ${sala.capacidade}, Descrição: ${sala.descricao}`;
                 listaSalas.appendChild(salaItem);
-            } else {
-                listaSalas.textContent = 'Nenhuma sala encontrada com o ID fornecido.';
+
             }
         })
         .catch(error => console.error('Erro ao obter sala:', error));
 }
+
 
 // Event listener para o formulário de busca
 document.getElementById('form-busca').addEventListener('submit', function (event) {
