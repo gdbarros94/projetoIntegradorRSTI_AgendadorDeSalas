@@ -1,6 +1,6 @@
 class Turma {
     constructor() {
-        this.baseUrl = 'http://172.20.48.182:3000/salas';
+        this.baseUrl = 'http://192.168.10.113:3000/salas';
         this.turmas = [];
     }
 
@@ -9,15 +9,15 @@ class Turma {
         this.turmas = await response.json();
     }
 
-    async cadastrar(nome, disciplina, professor, diasSemana, horaInicio, horaFim) {
+    async cadastrar(nome, disciplina, professor, diasSemana, horarioInicio, horarioFim) {
         const turma = {
             uid: this.gerarUID(),
             nome,
             disciplina,
             professor,
             diasSemana,
-            horaInicio,
-            horaFim
+            horarioInicio,
+            horarioFim
         };
         
         const response = await fetch(this.baseUrl, {
@@ -33,15 +33,15 @@ class Turma {
         return novaTurma;
     }
 
-    async editar(uid, nome, disciplina, professor, diasSemana, horaInicio, horaFim) {
+    async editar(uid, nome, disciplina, professor, diasSemana, horarioInicio, horarioFim) {
         const turma = this.buscarPorId(uid);
         if (turma) {
             turma.nome = nome;
             turma.disciplina = disciplina;
             turma.professor = professor;
             turma.diasSemana = diasSemana;
-            turma.horaInicio = horaInicio;
-            turma.horaFim = horaFim;
+            turma.horarioInicio = horarioInicio;
+            turma.horarioFim = horarioFim;
 
             await fetch(`${this.baseUrl}/${uid}`, {
                 method: 'PUT',

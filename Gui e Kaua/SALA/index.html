@@ -5,102 +5,133 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciamento de Salas</title>
-    <!-- Adicione o link para o Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
         .text-theme-color {
             color: #F77D0C;
         }
+
         .bg-theme-color {
             background-color: #F77D0C;
         }
+
         .hover\:bg-theme-color:hover {
             background-color: #F77D0C;
+        }
+
+        .bg-color-lateral {
+            background-color: #003a7b;
+        }
+
+        .--bg-tertiary-bg-rgb {
+            background-color: #E9ECEF;
+        }
+
+        /* Adicionando estilo para centralizar a seção de cadastro */
+        #principal {
+            align-items: center;
+            /* Centraliza verticalmente */
+            justify-content: center;
+            /* Centraliza horizontalmente */
+            height: 100vh;
+            /* Altura total da viewport */
         }
     </style>
 </head>
 
-<body class="bg-white m-5">
+<body class="bg-white">
+    <nav class="navbar" style="background-color: #f77d0c; position: relative; width: 100%; z-index: 3;">
+        <div class="container-fluid">
+            <span class="navbar-text mx-auto">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/Gui e Kaua/SALA/">Salas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Gui e Kaua/RESERVA/Reserva.html">Agendamentos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Gui e Kaua/TURMA/Turma.html">Turmas</a>
+                    </li>
+                </ul>
+            </span>
+        </div>
+    </nav>
 
-    <h1 class="text-center text-theme-color text-2xl my-10">Gerenciamento de Salas</h1>
+    <div id="principal"
+        class="col col-12 p-5 mx-auto my-5 w-100 align-items-stretch d-flex flex-column flex-md-row justify-content-between flex-wrap">
+        <div class="col col-1 d-flex flex-column-reverse flex-md-row justify-content-center">
+            <section
+                class="col px-0 mx-0 d-flex flex-column justify-content-end pb-5 pt- flex-shrink-1 bg-color-lateral">
+                <div class="container mx-auto mt-5 p-5 bg-white rounded-lg shadow-lg">
+                    <form id="form-cadastro" class="mb-6">
+                        <label for="nome" class="block mt-4 text-gray-700">Nome:</label>
+                        <input type="text" id="nome" name="nome" class="form-input mt-1 block w-full rounded" required>
 
-    <!-- Formulário para cadastrar uma nova sala -->
-    <div class="container mx-auto mt-10 p-6 bg-white rounded-lg shadow-lg">
-        <h2 class="text-theme-color text-lg mb-4">Cadastrar Nova Sala</h2>
-        <form id="form-cadastro" class="mb-6">
+                        <label for="capacidade" class="block mt-4 text-gray-700">Capacidade:</label>
+                        <input type="number" id="capacidade" name="capacidade"
+                            class="form-input mt-1 block w-full rounded" required>
 
-            <label for="nome" class="block mt-4 text-gray-700">Nome:</label>
-            <input type="text" id="nome" name="nome" class="form-input mt-1 block w-full rounded" required>
+                        <label for="descricao" class="block mt-4 text-gray-700">Descrição:</label>
+                        <textarea id="descricao" name="descricao"
+                            class="form-textarea mt-1 block w-full rounded"></textarea>
 
-            <label for="capacidade" class="block mt-4 text-gray-700">Capacidade:</label>
-            <input type="number" id="capacidade" name="capacidade" class="form-input mt-1 block w-full rounded"
-                required>
+                        <button type="submit"
+                            class="bg-theme-color text-white px-4 py-2 mt-4 rounded hover:bg-theme-color">Cadastrar
+                            Sala</button>
+                    </form>
+                </div>
 
-            <label for="descricao" class="block mt-4 text-gray-700">Descrição:</label>
-            <textarea id="descricao" name="descricao"
-                class="form-textarea mt-1 block w-full rounded"></textarea>
+                <div id="lista-salas" class="container mx-auto mt-5 p-5 bg-white rounded-lg shadow-lg">
+                    <h2 class="text-theme-color text-lg mb-4">Salas Cadastradas</h2>
+                    <!-- Lista de salas cadastradas -->
+                </div>
 
-            <button type="submit"
-                class="bg-theme-color text-white px-4 py-2 mt-4 rounded hover:bg-theme-color">Cadastrar Sala</button>
-        </form>
+                <form id="form-busca" class="mb-6">
+                    <label for="id-busca" class="block text-yellow-700">ID:</label>
+                    <input type="text" id="id-busca" name="id-busca"
+                        class="form-input mt-1 block w-full rounded" required>
 
-        <!-- Lista de salas cadastradas -->
-        <h2 class="text-theme-color text-lg mb-4">Salas Cadastradas</h2>
-        <div id="lista-salas" class="mb-6 font-bold"></div>
+                    <button type="submit"
+                        class="bg-theme-color text-white px-4 py-2 mt-4 rounded hover:bg-theme-color">Buscar</button>
+                </form>
 
-        <!-- Formulário para buscar sala por ID -->
-        <h2 class="text-theme-color text-lg mb-4">Buscar Sala por ID</h2>
-        <form id="form-busca" class="mb-6">
-            <label for="id-busca" class="block text-gray-700">ID:</label>
-            <input type="text" id="id-busca" name="id-busca"
-                class="form-input mt-1 block w-full rounded" required>
+                <div id="resultado-busca" class="font-bold text-theme-color"></div>
 
-            <button type="submit"
-                class="bg-theme-color text-white px-4 py-2 mt-4 rounded hover:bg-theme-color">Buscar</button>
-        </form>
+                <div class="container mx-auto mt-5 p-5 bg-white rounded-lg shadow-lg">
+                    <form id="form-editar" class="mb-6">
+                        <label for="idEdit" class="block text-gray-700">ID da Sala:</label>
+                        <input type="number" id="idEdit" name="idEdit"
+                            class="form-input mt-1 block w-full rounded" required>
 
-        <!-- Resultado da busca por ID -->
-        <div id="resultado-busca" class="font-bold text-theme-color"></div>
+                        <label for="nomeEdit" class="block mt-4 text-gray-700">Nome da Sala:</label>
+                        <input type="text" id="nomeEdit" name="nomeEdit"
+                            class="form-input mt-1 block w-full rounded" required>
+
+                        <label for="capacidadeEdit" class="block mt-4 text-gray-700">Capacidade:</label>
+                        <input type="number" id="capacidadeEdit" name="capacidadeEdit"
+                            class="form-input mt-1 block w-full rounded" required>
+
+                        <label for="descricaoEdit" class="block mt-4 text-gray-700">Descrição:</label>
+                        <textarea id="descricaoEdit" name="descricaoEdit"
+                            class="form-textarea mt-1 block w-full rounded"></textarea>
+
+                        <button type="submit"
+                            class="bg-theme-color text-white px-4 py-2 mt-4 rounded hover:bg-theme-color">Editar</button>
+                    </form>
+
+                    <form id="form-excluir" class="mb-6">
+                        <label for="idExcluir" class="block text-gray-700">ID da Sala:</label>
+                        <input type="number" id="idExcluir" name="idExcluir"
+                            class="form-input mt-1 block w-full rounded" required>
+
+                        <button type="submit"
+                            class="bg-theme-color text-white px-4 py-2 mt-4 rounded hover:bg-theme-color">Excluir</button>
+                    </form>
+                </div>
+            </section>
+        </div>
     </div>
-    <!-- Formulário para editar sala -->
-    <div class="container mx-auto mt-10 p-6 bg-white rounded-lg shadow-lg">
-        <h2 class="text-theme-color text-lg mb-4">Editar Sala</h2>
-        <form id="form-editar" class="mb-6">
-            <div class="mb-4">
-                <label for="idEdit" class="block text-gray-700">ID da Sala:</label>
-                <input type="number" id="idEdit" name="idEdit" class="form-input mt-1 block w-full rounded" required>
-            </div>
-    
-            <div class="mb-4">
-                <label for="nomeEdit" class="block mt-4 text-gray-700">Nome da Sala:</label>
-                <input type="text" id="nomeEdit" name="nomeEdit" class="form-input mt-1 block w-full rounded" required>
-            </div>
-    
-            <div class="mb-4">
-                <label for="capacidadeEdit" class="block mt-4 text-gray-700">Capacidade:</label>
-                <input type="number" id="capacidadeEdit" name="capacidadeEdit" class="form-input mt-1 block w-full rounded" required>
-            </div>
-    
-            <div class="mb-4">
-                <label for="descricaoEdit" class="block mt-4 text-gray-700">Descrição:</label>
-                <textarea id="descricaoEdit" name="descricaoEdit" class="form-textarea mt-1 block w-full rounded"></textarea>
-            </div>
-    
-            <button type="submit" class="bg-theme-color text-white px-4 py-2 mt-4 rounded hover:bg-theme-color">Editar</button>
-        </form>
-    
-        <!-- Formulário para excluir sala -->
-        <h2 class="text-theme-color text-lg mb-4">Excluir Sala</h2>
-        <form id="form-excluir" class="mb-6">
-            <div class="mb-4">
-                <label for="idExcluir" class="block text-gray-700">ID da Sala:</label>
-                <input type="number" id="idExcluir" name="idExcluir" class="form-input mt-1 block w-full rounded" required>
-            </div>
-    
-            <button type="submit" class="bg-theme-color text-white px-4 py-2 mt-4 rounded hover:bg-theme-color">Excluir</button>
-        </form>
-    </div>
-    
 
     <!-- Scripts para manipulação da classe Sala -->
     <script src="ClassSala.js"></script>

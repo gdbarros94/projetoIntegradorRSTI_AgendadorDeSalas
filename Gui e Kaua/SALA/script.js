@@ -1,6 +1,6 @@
 // Função para exibir a lista de salas cadastradas
 function exibirSalas() {
-    fetch('http://172.20.48.182:3000/salas')
+    fetch('http://192.168.10.113:3000/salas')
         .then(response => response.json())
         .then(salas => {
             const listaSalas = document.getElementById('lista-salas');
@@ -29,7 +29,7 @@ document.getElementById('form-cadastro').addEventListener('submit', function (ev
     const capacidade = parseInt(capacidadeStr); // Converte a capacidade para número inteiro
     const descricao = document.getElementById('descricao').value;
 
-    fetch('http://172.20.48.182:3000/salas')
+    fetch('http://192.168.10.113:3000/salas')
         .then(response => response.json())
         .then(salas => {
             let id;
@@ -52,7 +52,7 @@ document.getElementById('form-cadastro').addEventListener('submit', function (ev
             };
 
             // Envia uma solicitação POST para cadastrar a nova sala
-            return fetch('http://172.20.48.182:3000/salas', {
+            return fetch('http://192.168.10.113:3000/salas', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -91,7 +91,7 @@ document.getElementById('form-editar').addEventListener('submit', function (even
     };
 
     // Envia uma solicitação PUT para editar a sala
-    fetch(`http://172.20.48.182:3000/salas/${id}`, {
+    fetch(`http://192.168.10.113:3000/salas/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -120,7 +120,7 @@ document.getElementById('form-excluir').addEventListener('submit', function (eve
     const idExcluir = document.getElementById('idExcluir').value;
 
     // Envia uma solicitação DELETE para excluir a sala
-    fetch(`http://172.20.48.182:3000/salas/${idExcluir}`, {
+    fetch(`http://192.168.10.113:3000/salas/${idExcluir}`, {
         method: 'DELETE'
     })
     .then(() => {

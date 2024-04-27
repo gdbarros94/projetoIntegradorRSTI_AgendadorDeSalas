@@ -4,17 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerenciador de Turmas</title>
-    <!-- Incluindo Tailwind CSS -->
+    <title>Gerenciamento de Turmas</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-
     <style>
         /* Personalização de estilos */
         body {
-            background-color: #ffffff; /* Fundo branco */
+            background-color: #E9ECEF; /* Fundo cinza claro */
         }
+        
 
-        /* Detalhes na cor #F77D0C */
         .text-theme-color {
             color: #F77D0C;
         }
@@ -22,12 +20,46 @@
         .bg-theme-color {
             background-color: #F77D0C;
         }
+
+        .hover\:bg-theme-color:hover {
+            background-color: #F77D0C;
+        }
+
+        .bg-color-lateral {
+            background-color: #003a7b;
+        }
+
+        /* Adicionando estilo para centralizar a seção de cadastro */
+        #principal {
+            align-items: center;
+            /* Centraliza verticalmente */
+            justify-content: center;
+            /* Centraliza horizontalmente */
+            height: 100vh;
+            /* Altura total da viewport */
+        }
     </style>
 </head>
 
-<body class="bg-gray-100">
-
-    <div class="container mx-auto mt-10 p-6 bg-white rounded-lg shadow-lg">
+<body>
+    <nav class="navbar" style="background-color: #f77d0c; position: relative; width: 100%; z-index: 3;">
+        <div class="container-fluid">
+            <span class="navbar-text mx-auto">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/Gui e Kaua/SALA/index.html">Salas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Gui e Kaua/RESERVA/Reserva.html">Agendamentos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Gui e Kaua/TURMA/Turma.html">Turmas</a>
+                    </li>
+                </ul>
+            </span>
+        </div>
+    </nav>
+    <div class="container mx-auto mt-5 p-5 bg-white rounded-lg shadow-lg">
         <h2 class="text-theme-color text-2xl mb-4">Cadastro de Turma</h2>
         <form>
             <div class="mb-4">
@@ -55,9 +87,17 @@
                 <input type="text" class="form-input mt-1 block w-full" id="horaFim" name="horaFim" required>
             </div>
             <button type="button" onclick="cadastrarTurma()"
-                class="bg-theme-color text-white px-4 py-2 rounded hover:bg-orange-700">Cadastrar</button>
+                class="btn bg-theme-color text-white px-4 py-2 rounded hover:bg-orange-700">Cadastrar</button>
         </form>
     </div>
+                                    <!-- Mais campos omitidos por brevidade -->
+                       
+                    </form>
+                </div>
+                <!-- Outros elementos omitidos por brevidade -->
+            </section>
+        </div>
+    </section>
 
     <div class="container mx-auto mt-6 p-4 bg-white rounded-lg shadow-lg">
         <h2 class="text-theme-color text-2xl mb-4">Lista de Turmas</h2>
@@ -65,7 +105,7 @@
         <div id="listaTurmas"></div>
         <!-- As turmas serão listadas aqui -->
     </div>
-    
+
     <script src="ClassTurma.js"></script>
     <script src="script.js"></script>
 </body>

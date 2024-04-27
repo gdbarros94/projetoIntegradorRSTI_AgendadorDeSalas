@@ -1,12 +1,11 @@
-// Definição da classe Reserva com o construtor e os atributos id, sala, turma, data, horaInicio e horaFim
 class Reserva {
-    constructor(id, sala, turma, data, horaInicio, horaFim) {
-        this.id = id;
+    constructor(id, sala, turma, data, horarioInicio, horarioFim) {
+        this.id = id;  // Corrigido se o ID pode ser nulo, caso contrário, passe um valor válido.
         this.sala = sala;
         this.turma = turma;
         this.data = data;
-        this.horaInicio = horaInicio;
-        this.horaFim = horaFim;
+        this.horarioInicio = horarioInicio;
+        this.horarioFim = horarioFim;
     }
 
     // Definição de uma propriedade estática reservas para armazenar todas as reservas
@@ -14,7 +13,7 @@ class Reserva {
 
     // Método para cadastrar uma nova reserva
     cadastrar() {
-        Reserva.reservas.push();
+        Reserva.reservas.push(this); // Corrigido para adicionar a nova reserva ao array de reservas.
         console.log(`Reserva com ID ${this.id} cadastrada com sucesso.`);
     }
 
@@ -61,8 +60,8 @@ class Reserva {
                 reserva.sala === this.sala &&
                 reserva.data === this.data &&
                 (
-                    (this.horaInicio >= reserva.horaInicio && this.horaInicio < reserva.horaFim) ||
-                    (this.horaFim > reserva.horaInicio && this.horaFim <= reserva.horaFim)
+                    (this.horarioInicio >= reserva.horarioInicio && this.horarioInicio < reserva.horarioFim) ||
+                    (this.horarioFim > reserva.horarioInicio && this.horarioFim <= reserva.horarioFim)
                 )
             );
         });

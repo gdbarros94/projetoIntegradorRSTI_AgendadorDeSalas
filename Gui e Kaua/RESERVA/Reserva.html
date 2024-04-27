@@ -37,22 +37,22 @@
             /* Altura total da viewport */
         }
     </style>
-    <title>Agenda-103</title>
+    <title>Agendamentos</title>
 </head>
 
 <body>
-    <nav class="navbar" style="background-color: #003a7b; position: relative; width: 100%; z-index: 3;">
+       <nav class="navbar" style="background-color: #f77d0c; position: relative; width: 100%; z-index: 3;">
         <div class="container-fluid">
             <span class="navbar-text mx-auto">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Salas</a>
+                        <a class="nav-link active" aria-current="page" href="/Gui e Kaua/SALA/index.html">Salas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Agendamentos</a>
+                        <a class="nav-link" href="/Gui e Kaua/RESERVA/Reserva.html">Agendamentos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Turmas</a>
+                        <a class="nav-link" href="/Gui e Kaua/TURMA/Turma.html">Turmas</a>
                     </li>
                 </ul>
             </span>
@@ -80,54 +80,6 @@
                                             class="col px-0 mx-0 d-flex flex-column justify-content-end pb-5 pt- flex-shrink-1 bg-color-lateral">
                                             <!-- ... (seus botões anteriores) -->
 
-                                            <div id="exibirSala"
-                                                class="exibirsala-10 col w- d-flex flex-column justify-content-start px-4 py-1">
-                                                <button class="btn btn-dark btn-block">Editar Evento na Sala</button>
-                                                <ul class="list-group">
-                                                </ul>
-                                            </div>
-                                            <div id="exibirSala"
-                                                class="exibirsala-11 col w- d-flex flex-column justify-content-start px-4 py-1">
-                                                <button class="btn btn-dark btn-block">Remover Evento da Sala</button>
-                                                <ul class="list-group">
-                                                </ul>
-                                            </div>
-                                            <div id="exibirSala"
-                                                class="exibirsala-12 col w- d-flex flex-column justify-content-start px-4 py-1">
-                                                <button class="btn btn-dark btn-block">Editar Agendamento</button>
-                                                <ul class="list-group">
-                                                </ul>
-                                            </div>
-                                            <div id="exibirSala"
-                                                class="exibirsala-13 col w- d-flex flex-column justify-content-start px-4 py-1">
-                                                <button class="btn btn-dark btn-block">Remover Agendamento</button>
-                                                <ul class="list-group">
-                                                </ul>
-                                            </div>
-                                            <div id="exibirSala"
-                                                class="exibirsala-14 col w- d-flex flex-column justify-content-start px-4 py-1">
-                                                <button class="btn btn-dark btn-block">Editar Turma</button>
-                                                <ul class="list-group">
-                                                </ul>
-                                            </div>
-                                            <div id="exibirSala"
-                                                class="exibirsala-15 col w- d-flex flex-column justify-content-start px-4 py-1">
-                                                <button class="btn btn-dark btn-block">Remover Turma</button>
-                                                <ul class="list-group">
-                                                </ul>
-                                            </div>
-                                            <div id="exibirSala"
-                                                class="exibirsala-16 col w- d-flex flex-column justify-content-start px-4 py-1">
-                                                <button class="btn btn-dark btn-block">Listar Turmas</button>
-                                                <ul class="list-group">
-                                                </ul>
-                                            </div>
-                                            <div id="exibirSala"
-                                                class="exibirsala-17 col w- d-flex flex-column justify-content-start px-4 py-1">
-                                                <button class="btn btn-dark btn-block">Consulta de Turmas</button>
-                                                <ul class="list-group">
-                                                </ul>
-                                            </div>
                                         </section>
                                         <!-- ... (seu código principal) -->
                                     </div>
@@ -186,7 +138,7 @@
             const horarioInicio = document.getElementById('horarioInicio').value;
             const horarioFim = document.getElementById('horarioFim').value;
 
-            const url = `http://172.20.48.182:3000/salas/${salaId}?data=${data}&horarioInicio=${horarioInicio}&horarioFim=${horarioFim}`;
+            const url = `http://192.168.10.113:3000/salas/${salaId}?data=${data}&horarioInicio=${horarioInicio}&horarioFim=${horarioFim}`;
 
             try {
                 const response = await fetch(url);
