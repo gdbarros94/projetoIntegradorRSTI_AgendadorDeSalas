@@ -138,7 +138,7 @@
             const horarioInicio = document.getElementById('horarioInicio').value;
             const horarioFim = document.getElementById('horarioFim').value;
 
-            const url = `http://192.168.10.113:3000/salas/${salaId}?data=${data}&horarioInicio=${horarioInicio}&horarioFim=${horarioFim}`;
+            const url = `172.20.48.122/salas/${salaId}?data=${data}&horarioInicio=${horarioInicio}&horarioFim=${horarioFim}`;
 
             try {
                 const response = await fetch(url);

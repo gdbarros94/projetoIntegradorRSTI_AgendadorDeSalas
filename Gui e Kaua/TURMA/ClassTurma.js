@@ -1,6 +1,6 @@
 class Turma {
     constructor() {
-        this.baseUrl = 'http://192.168.10.113:3000/salas';
+        this.baseUrl = 'http://172.20.48.122:3000/salas';
         this.turmas = [];
     }
 
