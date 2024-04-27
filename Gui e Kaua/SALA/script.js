@@ -1,19 +1,29 @@
 // Função para exibir a lista de salas cadastradas
-function exibirSalas() {
-    fetch('http://172.20.48.122:3000/salas')
+function exibirSalas(idBusca) {
+    fetch(`http://172.20.48.122:3000/salas/${idBusca}`)
         .then(response => response.json())
-        .then(salas => {
+        .then(sala => {
             const listaSalas = document.getElementById('lista-salas');
             listaSalas.innerHTML = ''; // Limpa o conteúdo anterior
 
-            salas.forEach(sala => {
+            if (sala) {
                 const salaItem = document.createElement('p');
                 salaItem.textContent = `ID: ${sala.id}, Nome: ${sala.nome}, Capacidade: ${sala.capacidade}, Descrição: ${sala.descricao}`;
                 listaSalas.appendChild(salaItem);
-            });
+            } else {
+                listaSalas.textContent = 'Nenhuma sala encontrada com o ID fornecido.';
+            }
         })
-        .catch(error => console.error('Erro ao obter salas:', error));
+        .catch(error => console.error('Erro ao obter sala:', error));
 }
+
+// Event listener para o formulário de busca
+document.getElementById('form-busca').addEventListener('submit', function (event) {
+    event.preventDefault(); // Impede o envio padrão do formulário
+
+    const idBusca = document.getElementById('id-busca').value;
+    exibirSalas(idBusca);
+});
 
 // Função para verificar se um ID já existe
 function idExists(id, salas) {
