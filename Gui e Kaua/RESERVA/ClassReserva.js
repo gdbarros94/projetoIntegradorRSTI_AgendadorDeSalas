@@ -55,21 +55,42 @@ class Reserva {
 
     // Método para verificar conflito de horário com outras reservas
     verificarConflito() {
-        const conflito = Reserva.reservas.some(reserva => {
-            return (
-                reserva.sala === this.sala &&
-                reserva.data === this.data &&
-                (
-                    (this.horarioInicio >= reserva.horarioInicio && this.horarioInicio < reserva.horarioFim) ||
-                    (this.horarioFim > reserva.horarioInicio && this.horarioFim <= reserva.horarioFim)
-                )
-            );
-        });
-
-        if (conflito) {
-            console.log("Conflito de horário detectado.");
-        } else {
-            console.log("Nenhum conflito de horário detectado.");
+        // Fazendo uma solicitação para recuperar os dados das salas
+        fetch('http://172.20.48.122:3000/salas')
+            .then(response => response.json())
+            .then(salas => {
+                // Agora, temos as informações das salas, podemos verificar os conflitos
+                const conflito = Reserva.reservas.some(reserva => {
+                    const salaReserva = salas.find(sala => sala.id === reserva.sala);
+                    const salaAtual = salas.find(sala => sala.id === this.sala);
+    
+                    if (salaReserva && salaAtual) {
+                        // Verificar se as salas são as mesmas e as datas das reservas são iguais
+                        if (reserva.sala === this.sala && reserva.data === this.data) {
+                            // Verificar se há sobreposição de horários
+                            if (
+                                // Caso 1: Novo horário de início está dentro do horário da reserva existente
+                                (this.horarioInicio >= reserva.horarioInicio && this.horarioInicio < reserva.horarioFim) ||
+                                // Caso 2: Novo horário de término está dentro do horário da reserva existente
+                                (this.horarioFim > reserva.horarioInicio && this.horarioFim <= reserva.horarioFim) ||
+                                // Caso 3: A reserva existente está totalmente dentro do novo horário
+                                (this.horarioInicio <= reserva.horarioInicio && this.horarioFim >= reserva.horarioFim)
+                            ) {
+                                return true; // Conflito detectado
+                            }
+                        }
+                    } else {
+                        console.log("Sala não encontrada.");
+                    }
+                    return false; // Sem conflito neste caso
+                });
+    
+                if (conflito) {
+                    console.log("Conflito de horário detectado.");
+                } else {
+                    console.log("Nenhum conflito de horário detectado.");
+                }
+            })
+            .catch(error => console.error('Erro ao buscar dados das salas:', error));
         }
     }
-}
